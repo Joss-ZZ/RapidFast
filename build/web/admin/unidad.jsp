@@ -4,6 +4,7 @@
     Author     : PCGAMING
 --%>
 
+<%@page import="modelo.Conexion"%>
 <%@page import="modelo.Unidad"%>
 <%@page import="java.util.LinkedList"%>
 <%@ include file="templates/header.jsp"%>
@@ -16,7 +17,8 @@
     <script src="admin/js/validarunidad.js"> </script>
 
           <% 
-                 Unidad un=new Unidad();
+                 Conexion con=new Conexion();
+                 Unidad un=new Unidad(con);
                  LinkedList<Unidad> listasunidad;
                  listasunidad=un.unilista();
 

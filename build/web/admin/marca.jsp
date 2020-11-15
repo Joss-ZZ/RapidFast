@@ -1,3 +1,4 @@
+<%@page import="modelo.Conexion"%>
 <%@page import="modelo.Marca"%>
 <%@page import="java.util.LinkedList"%>
 <%@ include file="templates/header.jsp"%>
@@ -9,7 +10,8 @@
     <!-- /.card-header -->
     <script src="admin/js/validarmarca.js"> </script>
 <% 
-                 Marca mar=new Marca();
+                 Conexion con=new Conexion();
+                 Marca mar=new Marca(con);
                  LinkedList<Marca> listasmarca;
                  listasmarca=mar.marcalista();
 

@@ -19,7 +19,7 @@ public class Unidad {
     private int id;
     private String descripcion;
 
-    Conexion conn = new Conexion();
+    Conexion conn;
     public Unidad() {
     }
 
@@ -44,7 +44,9 @@ public class Unidad {
         this.descripcion = descripcion;
     }
 
-
+    public Unidad(Conexion conn) {
+        this.conn = conn;
+    }
   
     
      public LinkedList<Unidad> Listar(int id, String accion) {
