@@ -36,7 +36,7 @@
                              for (producto j : mostrarproductos) {
                          %>
                          <tr>
-                             <td style="background-color:#ffffff;">
+                            <td style="background-color:#ffffff;">
                                  <form method="post"
 				    action="producto.jsp">
                                      <a>
@@ -59,12 +59,14 @@
      
       <!-- FIN AGREGUE EL BUSCADOR-->
         <ul class="navbar-nav mr-auto">
+            <%if(user==null){%>
             <li class="nav-item active">
                 <a class="nav-link" href="registro.jsp">Registro<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="Recuperar_Cuenta.jsp" style=""> Olvidaste tu clave? </a>
             </li>
+            <%}%>
             <li class="nav-item">
                 <% if (user != null) {%>
                 <a class="nav-link" href="Perfil.jsp"><i class="fas fa-user-circle"></i><h6 style="margin-left:30px;margin-top:-23px"><%=user.getNombre()%></h6></a>

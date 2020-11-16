@@ -23,9 +23,7 @@
         <link rel="stylesheet" type="text/css" href="/RapidFast/admin/css/stylehome.css">
         <link href="https://fonts.googleapis.com/css2?family=Magra&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet"> 
-        <!--ICONOS -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/a076d05399.js%22%3E"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <title>Productos</title>
          <!--estilo buscador  agregado-->
         <link rel="stylesheet" type="text/css" href="/RapidFast/admin/css/buscador.css">
@@ -160,68 +158,7 @@
                 </div>
             </div>
         </form>
-        <!--- first corousel productos comprados --->
-        <div id="caroprocom" class="carousel slide" data-ride="carousel">
-
-            <ul class="carousel-indicators">
-                <li data-target="#caroprocom" data-slide-to="0" class="active"></li>
-                <li data-target="#caroprocom" data-slide-to="1" ></li>
-                <li data-target="#caroprocom" data-slide-to="2" ></li>
-            </ul>
-            <div class="carousel-inner">
-
-
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
-                            <div class="row" id="promit">
-                                <span id="p_caro">Productos mas vendidos</span>  
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
-                            <div class="row" id="promit">
-
-
-                                <div  id="inprod" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                                    <div id="margen">
-                                        <img  class="img-thumbnail" id="cargaimagen" src="">
-                                        <p id="product" > </p>
-                                        <div id="produ"class="row">
-                                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                                                <div class="container">
-
-                                                    <input type="button" id="btn" class="btn btn-danger" value="Ver Producto" onclick="">      
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                                <div class="row">
-                                                    <!-- agregasr-->
-                                                    <a id="canasta" href="" class="btn btn-success disabled" ><img id="newc" src="/RapidFast/admin/image/tienda.png"></a>
-                                                    <!-- /////////////-->
-                                                </div>
-                                                <div id="stockkk">
-                                                    <span style="color: white;"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>        
-                                </div> 
-
-                            </div>
-                        </div>
-                    </div>                
-                </div>                   
-            </div>
-            <a class="carousel-control-prev" href="#caroprocom" data-slide="prev">
-                <span  id="izq" class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#caroprocom" data-slide="next">
-                <span id="izq" class="carousel-control-next-icon"></span>
-            </a>                        
-        </div>
-        <!--- finsh corousel productos comprados --->                    
+                  
 
 
         <!-- MODALS -->
