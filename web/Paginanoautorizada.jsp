@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Error404
-    Created on : 12-nov-2020, 17:18:20
+    Document   : Paginanoautorizada
+    Created on : 16-nov-2020, 11:24:42
     Author     : PCGAMING
 --%>
 
@@ -11,11 +11,11 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link  href="/RapidFast/admin/css/styleRegistro.css" rel="stylesheet" />
-        <title>Ups! parece que hubo un error</title>       
+        <title>Página no autorizada</title>
+        <link rel="stylesheet" type="text/css" href="/RapidFast/admin/css/styleRegistro.css">
+
     </head>
        <!--BARRA DE NAVEGACION--> 
-        <!--BARRA DE NAVEGACION--> 
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="index.jsp">Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
       </nav>
     <body>
           
-        <section class="imagen-section" id="imagen1">
+        <section class="imagen-section" id="imagen">
                    <div class="container header-content-left">                             
                            <div  class="justify-content-center row">            
                                    <a href="index.jsp" type="button" class="btn btn-info">Ir a la Pagina Principal</a>      

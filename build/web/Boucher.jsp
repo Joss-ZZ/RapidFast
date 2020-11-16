@@ -44,6 +44,7 @@
                             <p id="ti">Factura</p>
                         </div>
                     </div>
+                    <a href="index.jsp" type="button" class="btn btn-info" style="margin-left: 10px;margin-top: -40px">Ir a la Pagina Principal</a> 
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
                             <div id="ds2" class="row">
@@ -126,16 +127,16 @@
                                             </tr>                                
                                         </tbody>
                                     </table>
-                                    <button id="btnImprimir" class="mt-2 btn btn-success" onclick="window.print()">Imprimir</button>
+                                    <button id="btnImprimir" class="mt-2 btn btn-success" onclick="window.print()">Imprimir</button>                                
                                 </div>
                             </div>        
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>                
         </form>
 
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-top:-10px; margin-left: 300px">
 
             <input type="hidden" name="cmd" value="_ext-enter" />
             <input type="hidden" name="redirect_cmd" value="_xclick" />
@@ -149,6 +150,7 @@
             <input type="image" src="http://www.paypal.com/es_XC/i/btn/x-click-but01.gif" border="0" name="submit" alt="Pagar para completar la compra." />
 
         </form>
+        <br>
     </body>
 </html>
 
