@@ -46,7 +46,7 @@ public class mante_venta extends HttpServlet {
             int id_venta = Integer.parseInt(request.getParameter("id_ven"));
             String hora = horaformat.format(fecha_completa);
             String fecha = fechaformat.format(fecha_completa);
-            ventaUpdate.updateventa(id_venta, id_user, fecha, hora, "pagado");
+            ventaUpdate.updateventa(id_venta, id_user, fecha, hora, "pagado");            
             Conexion conn1 = new Conexion();
             venta ventaAdd = new venta(conn1);
             int new_id_venta = ventaAdd.Addventa(id_user, fecha, hora, "proceso");
@@ -80,18 +80,24 @@ public class mante_venta extends HttpServlet {
                 double total = 0;
                 double totaltal = 0;              
                 LinkedList<venta> productosBoucher = new LinkedList<venta>();
+                Conexion conn4 = new Conexion();
+                producto prod = new producto(conn4);              
                 for (int i = 0; i < listav.size(); i++) {
                     if (id_venta == listav.get(i).getId_venta() && id_user == listav.get(i).getId_usuario() && listav.get(i).getEstado().equals("pagado")) {
                         venta productos = new venta();
-                        sub = sub + listav.get(i).getPreciostotal();                    
+                        sub = sub + listav.get(i).getPreciostotal();
                         productos.setNom_pro(listav.get(i).getNom_pro());
                         productos.setCarac(listav.get(i).getCarac());
                         productos.setC_comprada(listav.get(i).getC_comprada());
                         productos.setP_unitario(listav.get(i).getP_unitario());
-                        productos.setPreciostotal(listav.get(i).getPreciostotal());
+                        productos.setPreciostotal(listav.get(i).getPreciostotal());                      
+                        int stock = prod.buscarProducto(listav.get(i).getId_producto()).getStock() - listav.get(i).getC_comprada();
+                        prod.actualizarStock(listav.get(i).getId_producto(), stock);
                         productosBoucher.add(productos);
                     }
                 }
+                conn4.desconectar();
+
                 DecimalFormat decimales = new DecimalFormat("0.00");
                 total = sub * 0.18;
                 totaltal = sub + total;

@@ -59,12 +59,10 @@ public class mante_carrito extends HttpServlet {
             if(request.getParameter("actualizar") != null){
             int id_venta=Integer.parseInt(request.getParameter("id_venta"));
             int id_product=Integer.parseInt(request.getParameter("id_product"));
-            int cantidad=Integer.parseInt(request.getParameter("cantidad"));
-            float precio_uni=Float.valueOf(request.getParameter("precio_uni"));
-            float precio_total=precio_uni*cantidad;
-            int calificacion=Integer.parseInt(request.getParameter("calificacion"));
+            int cantidad= Integer.parseInt(request.getParameter("cantidad"));
+            int cant_carrito = Integer.parseInt(request.getParameter("cantidad_carrito"));
             
-            car.Editarcarrito(id_venta, id_product, cantidad, precio_total,id_venta,id_product);
+            car.Editarcarrito(id_venta, id_product, cantidad+cant_carrito);
             request.getRequestDispatcher("index.jsp").forward(request, response);
             }
             
@@ -84,7 +82,8 @@ public class mante_carrito extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        carrito c=new carrito();
+        Conexion con=new Conexion();
+        carrito c=new carrito(con);
         int id_carr=Integer.parseInt(request.getParameter("car"));
         int id_prod=Integer.parseInt(request.getParameter("pro"));
         c.Eliminardetalle(id_carr,id_prod);

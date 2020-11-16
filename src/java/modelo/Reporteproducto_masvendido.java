@@ -18,7 +18,7 @@ public class Reporteproducto_masvendido {
     private int total_cantidad;
     private int veces_compra;
 
-    Conexion conn = new Conexion();
+    Conexion conn;
     public Reporteproducto_masvendido() {
     }
 
@@ -97,10 +97,11 @@ public class Reporteproducto_masvendido {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-
     
-        
+    public Reporteproducto_masvendido(Conexion conn) {
+        this.conn = conn;
+    }
+
        public LinkedList<Reporteproducto_masvendido> Reporte_productomasVendido(){
         try {
             conn.getConnection();

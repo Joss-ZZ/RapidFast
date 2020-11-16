@@ -18,7 +18,7 @@ public class Reportemarca_categoria {
     private int id_marca;
     private String marca;
     private String categoria;
-    Conexion conn = new Conexion();
+    Conexion conn;
     public Reportemarca_categoria() {
     }
 
@@ -51,7 +51,9 @@ public class Reportemarca_categoria {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+    public Reportemarca_categoria(Conexion conn) {
+        this.conn = conn;
+    }
     
      public LinkedList<Reportemarca_categoria> Reporte_marcaCategoria(){
         try {

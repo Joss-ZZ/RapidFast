@@ -4,6 +4,7 @@
     Author     : PCGAMING
 --%>
 
+<%@page import="modelo.Conexion"%>
 <%@page import="modelo.Detalleproducto"%>
 <%@page import="java.util.LinkedList"%>
 
@@ -47,8 +48,8 @@
                         </tr>
                     </thead>
                <%
-  
-                Detalleproducto reporte_prcliente = new Detalleproducto();
+                Conexion con=new Conexion();
+                Detalleproducto reporte_prcliente = new Detalleproducto(con);
                 LinkedList<Detalleproducto> Reporte_prodclientes;
                 Reporte_prodclientes=  reporte_prcliente.Detalleproductoss(); 
              

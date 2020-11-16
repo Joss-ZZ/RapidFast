@@ -20,7 +20,7 @@ public class Detalleproducto {
     private String producto;
     private int cantidad;
     private Double precio;
-    Conexion conn = new Conexion();
+    Conexion conn;
     public Detalleproducto() {
     }
 

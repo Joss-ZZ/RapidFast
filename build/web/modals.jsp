@@ -29,7 +29,7 @@
                             </div>
                             <input id="password" type="password" name="password" class="form-control" placeholder="Contraseña" required="">  
                         </div> <!--input-group mb-4 --> 
-                        <a class="nav-link" href="RecuperarCuenta.jsp" style="margin-left: 290px"> Olvidastes tu clave? </a>                           
+                        <a class="nav-link" href="Recuperar_Cuenta.jsp" style="margin-left: 290px"> Olvidastes tu clave? </a>                           
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>

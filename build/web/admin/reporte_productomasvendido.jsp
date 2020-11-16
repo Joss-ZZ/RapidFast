@@ -3,6 +3,7 @@
     Created on : 21-jun-2020, 13:15:30
     Author     : PCGAMING
 --%>
+<%@page import="modelo.Conexion"%>
 <%@page import="modelo.Reporteproducto_masvendido"%>
 <%@page import="java.util.LinkedList"%>
 
@@ -50,8 +51,8 @@
                         </tr>
                     </thead>
                <%
-  
-                Reporteproducto_masvendido reporteprod_vendido = new Reporteproducto_masvendido();
+                Conexion con =new Conexion();
+                Reporteproducto_masvendido reporteprod_vendido = new Reporteproducto_masvendido(con);
                 LinkedList<Reporteproducto_masvendido> Reporte_prodmasvendido;
                 Reporte_prodmasvendido= reporteprod_vendido.Reporte_productomasVendido(); 
              

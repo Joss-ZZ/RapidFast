@@ -22,7 +22,7 @@ public class Reporteventa_producto {
     private String productos;
     private String estado;
     
-    Conexion conn = new Conexion();
+    Conexion conn;
     
     public Reporteventa_producto() {
     }
@@ -76,10 +76,13 @@ public class Reporteventa_producto {
         this.estado = estado;
     }
     
+     public Reporteventa_producto(Conexion conn) {
+        this.conn = conn;
+    }
     
-         public LinkedList<Reporteventa_producto> Reporte_ventaproductos(){
+    public LinkedList<Reporteventa_producto> Reporte_ventaproductos(){
         try {
-            conn.getConnection();
+            
             String query = "SELECT * FROM vista1";
             Statement sentencia = conn.getConnection().createStatement();
             ResultSet resultado = sentencia.executeQuery(query);
@@ -101,6 +104,8 @@ public class Reporteventa_producto {
         }
         return null;
     }
+    
+    
     
     
     

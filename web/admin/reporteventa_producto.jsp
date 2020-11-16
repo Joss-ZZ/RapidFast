@@ -4,6 +4,7 @@
     Author     : PCGAMING
 --%>
 
+<%@page import="modelo.Conexion"%>
 <%@page import="modelo.Reporte_general"%>
 <%@page import="modelo.Reporteventa_producto"%>
 <%@page import="java.util.LinkedList"%>
@@ -48,8 +49,8 @@
                         </tr>
                     </thead>
                <%
-  
-                Reporteventa_producto reporte_vtaprod = new Reporteventa_producto();
+                Conexion con=new Conexion();
+                Reporteventa_producto reporte_vtaprod = new Reporteventa_producto(con);
                 LinkedList<Reporteventa_producto> Reporte_ventasprod;
                 Reporte_ventasprod= reporte_vtaprod.Reporte_ventaproductos(); 
              

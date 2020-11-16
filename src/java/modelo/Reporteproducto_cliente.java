@@ -23,7 +23,7 @@ public class Reporteproducto_cliente {
     private int cantidad;
     private double total;
     private String estado;
-    Conexion conn = new Conexion();
+    Conexion conn;
     public Reporteproducto_cliente() {
     }
 
@@ -110,6 +110,10 @@ public class Reporteproducto_cliente {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+    
+    public Reporteproducto_cliente(Conexion conn) {
+        this.conn = conn;
     }
     
     public LinkedList<Reporteproducto_cliente> Reporte_productoClientes(){

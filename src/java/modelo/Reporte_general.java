@@ -17,7 +17,7 @@ public class Reporte_general {
     private int cantidad ;
     private double total;
     private String estado;
-    Conexion conn = new Conexion();
+    Conexion conn;
     public Reporte_general() {
     }
 
@@ -114,7 +114,9 @@ public class Reporte_general {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
+     public Reporte_general(Conexion conn) {
+        this.conn = conn;
+    }
      public LinkedList<Reporte_general> Reporte_general(){
         try {
             conn.getConnection();

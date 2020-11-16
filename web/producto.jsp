@@ -4,6 +4,7 @@
     Author     : PCGAMING
 --%>
 
+<%@page import="modelo.detalle"%>
 <%@page import="modelo.Conexion"%>
 <%@page import="modelo.producto"%>
 <%@page import="java.util.LinkedList"%>
@@ -11,7 +12,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -26,25 +26,31 @@
         <!--ICONOS -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <title>Productos</title>
+         <!--estilo buscador  agregado-->
+        <link rel="stylesheet" type="text/css" href="/RapidFast/admin/css/buscador.css">
+        <!--fin estilo buscador -->
     </head>
     <%@include file="navegacion.jsp" %>
     <body>
 
-        <%
-            Integer id_venta = (Integer)session.getAttribute("idventa");
-            
-            boolean usuario = false;
-            if(user==null){
-            }else{
-                usuario=true;
-            }
-            
+        <%  
+            Integer id_venta = (Integer) session.getAttribute("idventa");
             Integer id_product = 0;
             try {
-                    id_product = Integer.parseInt(request.getParameter("id_prod"));
-                } catch (Exception e) {
-                    request.getRequestDispatcher("Error404.jsp").forward(request, response);
-                }
+                id_product = Integer.parseInt(request.getParameter("id_prod"));
+            } catch (Exception e) {
+                request.getRequestDispatcher("Error404.jsp").forward(request, response);
+            }
+
+            boolean usuario = false;
+            int cantidadProdCarrito = 0;
+            if (user == null) {
+            } else {       
+                usuario = true;    
+                Conexion conn5 = new Conexion();
+                detalle det = new detalle(conn5);              
+                cantidadProdCarrito = det.compararProducto(id_venta, id_product);
+            }                     
             Conexion conn = new Conexion();
             producto pro = new producto(conn);
             producto productoEncontrado = pro.buscarProducto(id_product);
@@ -82,6 +88,10 @@
                             </div>
                             <div class="row">
                                 <span id="vistaproducto">STOCK: <span id="stockProd"><%=productoEncontrado.getStock()%></span></span>
+                            </div>
+                            <div class="row">
+                                <span id="vistaproducto">Cantidad en Carrito: <span id="cantidadProdCarrito"><%=cantidadProdCarrito%></span></span>
+                                <input type="hidden" name="cantidad_carrito" value="<%=cantidadProdCarrito%>">
                             </div>
                             <div class="row">
                                 <span id="vistaproducto">Cantidad: </span>
@@ -129,16 +139,16 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">   
-                                    <% if(usuario) {%>
+                                    <% if (usuario && cantidadProdCarrito==0) {%>
                                     <input type="submit" class="form-control btn btn-success" name="registrar"  value="Add Carrito" >
-                                    <%}else{%>
+                                    <%} else {%>
                                     <input type="submit" class="form-control btn btn-success" name="registrar"  value="Add Carrito" disabled>
                                     <%}%>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                    <% if(usuario) {%>
+                                    <% if (usuario && cantidadProdCarrito!=0) {%>
                                     <input type="submit" class="form-control btn btn-success" name="actualizar" value="Update Carrito">
-                                    <%}else{%>
+                                    <%} else {%>
                                     <input type="submit" class="form-control btn btn-success" name="actualizar" value="Update Carrito" disabled>
                                     <%}%>
                                 </div>
@@ -215,33 +225,9 @@
 
         <!-- MODALS -->
         <%@include file="modals.jsp" %>
-
-        <!-----nav final  -->    
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <nav class="navbar navbar-expand-md  navbar-dark fixed-bottom " id="nv">
-                    <ul class="navbar-nav">
-                        <li class="nav-item " >
-                            <img id="logo2" src="/RapidFast/admin/image/logo2.png">
-                        </li>
-                        <li class="nav-item " >
-                            <a class="nav-link" href="https://www.facebook.com" target="_blank"><img  id="logoabajo" src="/RapidFast/admin/image/face.png" class="rounded-circle"></a>
-                        </li>
-                        <li class="nav-item" >
-                            <a class="nav-link" href="https://www.instagram.com/?hl=es-la" target="_blank"><img id="logoabajo" src="/RapidFast/admin/image/insta.png" class="rounded-circle"></a>
-                        </li>
-                        <li class="nav-item" >
-                            <a class="nav-link" href="https://twitter.com/login?lang=es" target="_blank"><img id="logoabajo" src="/RapidFast/admin/image/twitter.png" class="rounded-circle"></a>
-                        </li>
-                        <li class="nav-item" >
-                            <a class="nav-link" href="https://www.youtube.com/" target="_blank"><img id="logoabajo" src="/RapidFast/admin/image/youtube.png" class="rounded-circle"></a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-
+        <!-- agregado footer -->
+        <%@include file="footer_index.jsp" %>
+        <!-- fin  agregado footer -->
         <script>
             let resta = document.getElementById('restar');
             let suma = document.getElementById('sumar');
@@ -249,6 +235,7 @@
             let precioSubTotal = document.getElementById('show_precio');
             //Stock del producto
             let stock = Number(document.getElementById('stockProd').textContent);
+            let cantProdCarrito = Number(document.getElementById('cantidadProdCarrito').textContent);
             let cant = Number(cantidad.value);
             let valorUnit = Number(precioSubTotal.value);
 
@@ -263,9 +250,9 @@
             });
 
             suma.addEventListener('click', () => {
-                if(cant === stock){
+                if (cant === (stock-cantProdCarrito)) {
                     alert('La cantidad no puede ser mayor al stock disponible')
-                }else{
+                } else {
                     cant++;
                     cantidad.value = cant;
                     precioSubTotal.value = cant * valorUnit;

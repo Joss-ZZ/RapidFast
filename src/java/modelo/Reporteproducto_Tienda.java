@@ -24,7 +24,7 @@ public class Reporteproducto_Tienda {
    private int cantidad;
    private String unidad;
    
-   Conexion conn = new Conexion();
+   Conexion conn;
     public Reporteproducto_Tienda() {
     }
 
@@ -103,7 +103,9 @@ public class Reporteproducto_Tienda {
         this.unidad = unidad;
     }
    
-    
+     public Reporteproducto_Tienda(Conexion conn) {
+        this.conn = conn;
+    }
        public LinkedList<Reporteproducto_Tienda> Reporte_productoTienda(){
         try {
             conn.getConnection();
