@@ -45,8 +45,9 @@ public class ValidarCuenta extends HttpServlet {
 
         if (tokenusuario.equals(tokenenviado)) {
             Conexion conn = new Conexion();
+            Conexion con1 = new Conexion();
             Usuario us = new Usuario(conn);
-            Usuario use = new Usuario();
+            Usuario use = new Usuario(con1);
             use = us.HabilitarUsuario(idcliente);
             //session.setAttribute("usuario", use);
             System.out.println(use.getNombre());

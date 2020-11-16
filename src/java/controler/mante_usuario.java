@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Conexion;
 import modelo.EnviarToken;
 import modelo.Usuario;
 import modelo.token;
@@ -29,7 +30,8 @@ public class mante_usuario extends HttpServlet {
             throws ServletException, IOException {
         String mensaje="";
         RequestDispatcher rd;
-        Usuario user=new Usuario();
+        Conexion con =new Conexion();
+        Usuario user=new Usuario(con);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
         if(request.getParameter("registrar") != null){

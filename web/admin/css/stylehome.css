@@ -272,3 +272,11 @@ input[type="radio"]:checked ~ #lavel23{
 #alertanueva{
     margin-left: 5%;
 }
+
+.imgRedonda-logo {
+	width: 200px;
+	height:200px;
+	border-radius: 150px;
+	border: 2px solid #000000;
+	
+}

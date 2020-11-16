@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 
 /**
  *
@@ -292,4 +293,28 @@ public class Usuario {
         return null;
     }
 
+       public LinkedList<Usuario> generaridUsuario(){
+        
+        try{
+            String query = "SELECT * FROM usuario;";
+            Statement sentencia = conn.getConnection().createStatement();
+            ResultSet resultado = sentencia.executeQuery(query);
+            LinkedList<Usuario> lista;
+            lista= new LinkedList<Usuario>();
+            while(resultado.next()){
+                Usuario u = new Usuario();
+                u.setId_usuario(resultado.getInt("id_usuario"));
+                lista.add(u);
+            }
+            sentencia.close(); //cerrando
+            resultado.close();//cerrando
+            conn.desconectar(); // termina la conexion 
+            return lista;
+            
+        }catch(Exception ex){
+            System.out.print("problemas en conexion generaridtweet ");
+        }
+        return null;
+    }
+    
 }

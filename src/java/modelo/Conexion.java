@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class Conexion {
     
-     static String bd = "rapidfastdb";
+    static String bd = "rapidfastdb";
     static String login = "root";
     static String password = "123456";
     static String url = "jdbc:mysql://localhost:3306/"+bd;
