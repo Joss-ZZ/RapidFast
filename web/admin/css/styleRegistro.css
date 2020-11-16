@@ -1,31 +1,11 @@
-.caja{
-	background-color: white;
-	height: 600px;
-	width: 900px;
-	border-radius: 50px;
-	margin: 20px auto;
+#imagen{
+    background: url('/RapidFast/admin/image/paginanoautorizada.png') no-repeat center ;
 }
-
-input[type=text]{
-	width: 425px;
-	height: 35px;
+.imagen-section {
+    padding-top: 480px;
     
 }
-input[type=submit]{
-	width: 90px;
-	height: 30px;
-	border-radius: 10px;
-	background-color: skyblue;
-	color:white;
-	float: right;
-	margin-right: 50px;
-    
-}
-h1{
-	padding-left: 65px;
 
-
-}
-body{
-	background-color: skyblue;
+#imagen1{
+    background: url('/RapidFast/admin/image/error404.png') no-repeat center ;
 }

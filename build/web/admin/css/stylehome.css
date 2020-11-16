@@ -84,7 +84,8 @@ img#wishlist,#admin{
 }
 
 img#newc{
-    width: 30px;
+    width: 21px;
+    margin-left:-5px;
 }
 #produ{
     text-align: center;
@@ -100,6 +101,9 @@ img#newc{
 }
 #canasta{
     background: #ffc94a;
+    margin-left: 14px;
+    width: 38px;
+    
 }
 #stockkk{
     border: solid 1px #f02626;
@@ -107,11 +111,12 @@ img#newc{
     width: 33px;
     background-color: red;
     position: absolute;
-    top: -16px;
-    right: 22px;
+    top: -15px;
+    right: 16px;
+    
 }
 #inprod{
-    padding: 28px;
+    padding: 25px;/**/
 }
 #num{
     padding: 0%;
