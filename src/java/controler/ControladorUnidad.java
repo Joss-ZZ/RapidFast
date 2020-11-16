@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Conexion;
 import modelo.Unidad;
 
 /**
@@ -24,11 +25,11 @@ public class ControladorUnidad extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-         //  System.out.println("111111111111111111");
-            String accion = request.getParameter("accion");
-         //   System.out.println("2222222222222");
+        Conexion con =new Conexion();
+        String accion = request.getParameter("accion");
+        
         if (accion.equals("Listar")) {
-            Unidad u = new Unidad();
+            Unidad u = new Unidad(con);
             LinkedList<Unidad> un = u.Listar(0, accion);
             request.setAttribute("Unidades",un);
             request.getRequestDispatcher("admin/unidad.jsp").forward(request, response);
@@ -44,7 +45,7 @@ public class ControladorUnidad extends HttpServlet {
 
         if (accion.equals("Eliminar")) {
             int id = Integer.parseInt(request.getParameter("Id"));
-            Unidad st = new Unidad();
+            Unidad st = new Unidad(con);
             LinkedList<Unidad> s= st.Listar(id, accion);
             response.sendRedirect("ControladorUnidad?accion=Listar");
         }        
@@ -54,8 +55,9 @@ public class ControladorUnidad extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
+        Conexion con =new Conexion();
         if (accion.equals("Registrar")) {
-            Unidad un = new Unidad();  
+            Unidad un = new Unidad(con);  
             un.setDescripcion(request.getParameter("descripcion"));
    
             un.MantenerUnidad(un, accion);
@@ -63,7 +65,7 @@ public class ControladorUnidad extends HttpServlet {
         }
 
         if (accion.equals("Editar")) {
-            Unidad un = new Unidad();
+            Unidad un = new Unidad(con);
             
             un.setId(Integer.parseInt(request.getParameter("id")));
             un.setDescripcion(request.getParameter("descripcion"));

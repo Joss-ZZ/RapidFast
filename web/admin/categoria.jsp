@@ -1,3 +1,4 @@
+<%@page import="modelo.Conexion"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="modelo.Categoria"%>
 <%@ include file="templates/header.jsp"%>
@@ -9,8 +10,8 @@
     <!-- /.card-header -->
     <script src="admin/js/validar.js"> </script>
 
-      <% 
-                 Categoria cat=new Categoria();
+    <%           Conexion con=new Conexion();
+                 Categoria cat=new Categoria(con);
                  LinkedList<Categoria> listascategoria;
                  listascategoria=cat.categorialista();
 

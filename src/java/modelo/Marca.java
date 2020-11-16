@@ -18,7 +18,7 @@ import java.util.LinkedList;
 public class Marca {
     private int id;
     private String descripcion;
-    Conexion conn = new Conexion();
+    Conexion conn;
     public Marca() {
     }
 
@@ -43,6 +43,9 @@ public class Marca {
         this.descripcion = descripcion;
     }
     
+    public Marca(Conexion conn) {
+        this.conn = conn;
+    }
     public LinkedList<Marca> Listar(int id, String accion) {
         LinkedList<Marca> marcas = new LinkedList<Marca>();
         String sql = "{CALL PRC_MANTE_MARCAS(?,'',?)}";

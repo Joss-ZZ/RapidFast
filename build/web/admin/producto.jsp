@@ -8,11 +8,19 @@
                int cont=0;
                float precio=0;
                int stock=0;
-               producto newpro= new producto();
-               Marca mar=new Marca();
-               Categoria cat=new Categoria();
-               Unidad und=new Unidad();
-               LinkedList<producto> lista= newpro.prolista();
+               Conexion con=new Conexion();
+               producto newpro= new producto(con);
+               
+               Conexion con1=new Conexion();
+               Marca mar=new Marca(con1);
+               
+               Conexion con2=new Conexion();
+               Categoria cat=new Categoria(con2);
+               
+               Conexion con3=new Conexion();
+               Unidad und=new Unidad(con3);
+               
+               LinkedList<producto> lista= newpro.ListarProducto();
                LinkedList<Unidad> listasunid=und.unilista();
                LinkedList<Marca> listasmarca=mar.marcalista();
                LinkedList<Categoria> listascategoria=cat.categorialista();                       
@@ -77,6 +85,7 @@
                             </div>    
                             <div class="row">
                                 <% 
+         
                                     if(lista.size()>=1)
                                     {   cont=lista.size();cont++;
                                         for (int i = 0; i <lista.size(); i++) {

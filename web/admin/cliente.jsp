@@ -1,5 +1,6 @@
 
 
+<%@page import="modelo.Conexion"%>
 <%@page import="modelo.Reporte_cliente"%>
 <%@page import="java.util.LinkedList"%>
 
@@ -51,8 +52,8 @@
                         </tr>
                     </thead>
                <%
-  
-                Reporte_cliente reporte_clientess = new Reporte_cliente();
+                Conexion con=new Conexion();
+                Reporte_cliente reporte_clientess = new Reporte_cliente(con);
                 LinkedList<Reporte_cliente> Reporte_clientes;
                 Reporte_clientes= reporte_clientess.reporte_clientes(); 
               %>

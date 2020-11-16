@@ -116,7 +116,7 @@ public class Reporte_cliente {
     
     public LinkedList<Reporte_cliente> reporte_clientes(){
         try {
-            conn.getConnection();
+//            conn.getConnection();
             String query = "SELECT * FROM reporte_cliente";
             Statement sentencia = conn.getConnection().createStatement();
             ResultSet resultado = sentencia.executeQuery(query);

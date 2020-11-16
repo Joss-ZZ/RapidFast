@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Categoria;
+import modelo.Conexion;
 
 /**
  *
@@ -23,12 +24,12 @@ public class ControladorCategoria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String accion = request.getParameter("accion");
-            
-            System.out.println("----------------------------------------");
+        String accion = request.getParameter("accion");
+        Conexion con=new Conexion();
+           
 
         if (accion.equals("Listar")) {
-            Categoria cat = new Categoria();
+            Categoria cat = new Categoria(con);
             LinkedList<Categoria> ca = cat.Listar(0, accion);
             request.setAttribute("Categorias",ca);
             request.getRequestDispatcher("admin/categoria.jsp").forward(request, response);
@@ -44,7 +45,7 @@ public class ControladorCategoria extends HttpServlet {
 
         if (accion.equals("Eliminar")) {
             int id = Integer.parseInt(request.getParameter("Id"));
-            Categoria cat = new Categoria();
+            Categoria cat = new Categoria(con);
             LinkedList<Categoria> ca= cat.Listar(id, accion);
             response.sendRedirect("ControladorCategoria?accion=Listar");
         }        
@@ -54,8 +55,9 @@ public class ControladorCategoria extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
+        Conexion con=new Conexion();
         if (accion.equals("Registrar")) {
-            Categoria cat = new Categoria();  
+            Categoria cat = new Categoria(con);  
             cat.setDescripcion(request.getParameter("descripcion"));
    
             cat.MantenerCategoria(cat, accion);
@@ -63,7 +65,7 @@ public class ControladorCategoria extends HttpServlet {
         }
 
         if (accion.equals("Editar")) {
-            Categoria cat = new Categoria();
+            Categoria cat = new Categoria(con);
             
             cat.setId(Integer.parseInt(request.getParameter("id")));
             cat.setDescripcion(request.getParameter("descripcion"));

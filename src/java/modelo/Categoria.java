@@ -20,7 +20,7 @@ import java.util.List;
 public class Categoria {
     private int id;
     private String descripcion;
-    Conexion conn = new Conexion();
+    Conexion conn ;
     public Categoria() {
     }
 
@@ -45,6 +45,9 @@ public class Categoria {
         this.descripcion = descripcion;
     }
     
+    public Categoria(Conexion conn) {
+        this.conn = conn;
+    }
     public LinkedList<Categoria> Listar(int id, String accion) {
         LinkedList<Categoria> categorias = new LinkedList<Categoria>();
         String sql = "{CALL PRC_MANTE_CATEGORIAS(?,'',?)}";

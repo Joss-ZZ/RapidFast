@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Conexion;
 import modelo.producto;
 
 /**
@@ -21,21 +22,15 @@ import modelo.producto;
 @WebServlet(name = "mante_producto", urlPatterns = {"/mante_producto"})
 public class mante_producto extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         int cont=0;
-         producto pro=new producto();
+         Conexion con=new Conexion();
+         producto pro=new producto(con);
+       
         /////////////////////////
         try (PrintWriter out = response.getWriter()) {
                 int id_prod=Integer.parseInt(request.getParameter("id_prod"));
@@ -64,7 +59,8 @@ public class mante_producto extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        producto pro=new producto();
+         Conexion con=new Conexion();
+         producto pro=new producto(con);
         
         int id_prod=Integer.parseInt(request.getParameter("id"));
         pro.Eliminarproducto(id_prod);

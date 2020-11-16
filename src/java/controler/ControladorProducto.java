@@ -23,6 +23,7 @@ public class ControladorProducto extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             String accion = request.getParameter("accion");
+            
             HttpSession session = request.getSession();
         if (accion.equals("Listar")) {
          
