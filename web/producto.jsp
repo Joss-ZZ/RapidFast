@@ -4,6 +4,7 @@
     Author     : PCGAMING
 --%>
 
+<%@page import="modelo.detalle"%>
 <%@page import="modelo.Conexion"%>
 <%@page import="modelo.producto"%>
 <%@page import="java.util.LinkedList"%>
@@ -30,21 +31,24 @@
     <%@include file="navegacion.jsp" %>
     <body>
 
-        <%
-            Integer id_venta = (Integer)session.getAttribute("idventa");
-            
-            boolean usuario = false;
-            if(user==null){
-            }else{
-                usuario=true;
-            }
-            
+        <%  
+            Integer id_venta = (Integer) session.getAttribute("idventa");
             Integer id_product = 0;
             try {
-                    id_product = Integer.parseInt(request.getParameter("id_prod"));
-                } catch (Exception e) {
-                    request.getRequestDispatcher("Error404.jsp").forward(request, response);
-                }
+                id_product = Integer.parseInt(request.getParameter("id_prod"));
+            } catch (Exception e) {
+                request.getRequestDispatcher("Error404.jsp").forward(request, response);
+            }
+
+            boolean usuario = false;
+            int cantidadProdCarrito = 0;
+            if (user == null) {
+            } else {       
+                usuario = true;    
+                Conexion conn5 = new Conexion();
+                detalle det = new detalle(conn5);              
+                cantidadProdCarrito = det.compararProducto(id_venta, id_product);
+            }                     
             Conexion conn = new Conexion();
             producto pro = new producto(conn);
             producto productoEncontrado = pro.buscarProducto(id_product);
@@ -82,6 +86,10 @@
                             </div>
                             <div class="row">
                                 <span id="vistaproducto">STOCK: <span id="stockProd"><%=productoEncontrado.getStock()%></span></span>
+                            </div>
+                            <div class="row">
+                                <span id="vistaproducto">Cantidad en Carrito: <span id="cantidadProdCarrito"><%=cantidadProdCarrito%></span></span>
+                                <input type="hidden" name="cantidad_carrito" value="<%=cantidadProdCarrito%>">
                             </div>
                             <div class="row">
                                 <span id="vistaproducto">Cantidad: </span>
@@ -129,16 +137,16 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">   
-                                    <% if(usuario) {%>
+                                    <% if (usuario && cantidadProdCarrito==0) {%>
                                     <input type="submit" class="form-control btn btn-success" name="registrar"  value="Add Carrito" >
-                                    <%}else{%>
+                                    <%} else {%>
                                     <input type="submit" class="form-control btn btn-success" name="registrar"  value="Add Carrito" disabled>
                                     <%}%>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                    <% if(usuario) {%>
+                                    <% if (usuario && cantidadProdCarrito!=0) {%>
                                     <input type="submit" class="form-control btn btn-success" name="actualizar" value="Update Carrito">
-                                    <%}else{%>
+                                    <%} else {%>
                                     <input type="submit" class="form-control btn btn-success" name="actualizar" value="Update Carrito" disabled>
                                     <%}%>
                                 </div>
@@ -249,6 +257,7 @@
             let precioSubTotal = document.getElementById('show_precio');
             //Stock del producto
             let stock = Number(document.getElementById('stockProd').textContent);
+            let cantProdCarrito = Number(document.getElementById('cantidadProdCarrito').textContent);
             let cant = Number(cantidad.value);
             let valorUnit = Number(precioSubTotal.value);
 
@@ -263,9 +272,9 @@
             });
 
             suma.addEventListener('click', () => {
-                if(cant === stock){
+                if (cant === (stock-cantProdCarrito)) {
                     alert('La cantidad no puede ser mayor al stock disponible')
-                }else{
+                } else {
                     cant++;
                     cantidad.value = cant;
                     precioSubTotal.value = cant * valorUnit;

@@ -310,11 +310,25 @@ public class producto {
                 pro.setDes_unidad(resultado.getString("des_unidad"));
                 pro.setImagen(resultado.getString("imagen"));
             }
-            conn.desconectar();
             return pro;
         } catch (SQLException ex) {
             System.out.println("Error en producto.buscarProducto: " + ex.getMessage());
         }
         return null;
+    }
+    
+    public void actualizarStock(int id_prod, int cantidad){
+        try {
+            String query = "UPDATE productos SET ";
+            query = query + "stock=? ";
+            query = query + "WHERE id_producto=?; ";
+            PreparedStatement sentencia = conn.getConnection().prepareStatement(query);
+            sentencia.setInt(1, cantidad);
+            sentencia.setInt(2, id_prod);
+            sentencia.executeUpdate();
+            sentencia.close();           
+        } catch (SQLException ex) {
+            System.out.println("Error en producto.actualizarStock: " + ex.getMessage());
+        }
     }
 }

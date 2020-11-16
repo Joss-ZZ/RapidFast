@@ -242,21 +242,16 @@ public class carrito {
     }
 
     ////////////////EDITAR PRODUCTO  
-    public void Editarcarrito(int id_venta2, int id_produc2, int cantidad, float precio_total, int id_venta, int id_produc) {
+    public void Editarcarrito(int id_venta, int id_produc, int cantidad) {
         try {
-            String query = "UPDATE DETALLE SET id_venta=?, ";
-            query = query + "id_producto=?, ";
-            query = query + "cantidad=?, ";
-            query = query + "precio_total=? ";
+            String query = "UPDATE DETALLE SET ";
+            query = query + "cantidad=? ";
             query = query + "WHERE id_producto=? ";
             query = query + "AND id_venta=? ";
             PreparedStatement sentencia = conn.getConnection().prepareStatement(query);
-            sentencia.setInt(1, id_venta2);
-            sentencia.setInt(2, id_produc2);
-            sentencia.setInt(3, cantidad);
-            sentencia.setFloat(4, precio_total);
-            sentencia.setInt(5, id_produc);
-            sentencia.setInt(6, id_venta);
+            sentencia.setInt(1, cantidad);
+            sentencia.setInt(2, id_produc);
+            sentencia.setInt(3, id_venta);
             sentencia.executeUpdate();
             sentencia.close();
             conn.desconectar();
