@@ -133,10 +133,10 @@ public class mante_venta extends HttpServlet {
                         System.out.println("Hay problemas en el metodo v.Addventa, retorna un valor menor o igual a 0");
                     }
             }else{
-                request.getRequestDispatcher("Error404.jsp").forward(request, response);
+                request.getRequestDispatcher("Paginanoautorizada.jsp").forward(request, response);
             }
                 }else{
-                    request.getRequestDispatcher("Error404.jsp").forward(request, response);
+                    request.getRequestDispatcher("Paginanoautorizada.jsp").forward(request, response);
                 }
                 }
             }
