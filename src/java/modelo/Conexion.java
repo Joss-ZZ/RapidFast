@@ -17,7 +17,7 @@ public class Conexion {
     
      static String bd = "rapidfastdb";
     static String login = "root";
-    static String password = "123456";
+    static String password = "admin";
     static String url = "jdbc:mysql://localhost:3306/"+bd;
     
     //Variable que guarda la conexion
@@ -26,7 +26,7 @@ public class Conexion {
       public Conexion(){
         try {
             //obtenemos el driver para mysql
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             //obtenemos la conexion
             conn = DriverManager.getConnection(url, login, password);
             if(conn != null){
