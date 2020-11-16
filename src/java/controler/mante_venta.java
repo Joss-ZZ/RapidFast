@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.Conexion;
 import modelo.Reporte_cliente;
+import modelo.Usuario;
 import modelo.producto;
 import modelo.venta;
 
@@ -43,6 +44,9 @@ public class mante_venta extends HttpServlet {
         HttpSession session = request.getSession();
         try (PrintWriter out = response.getWriter()) {
             int id_user = Integer.parseInt(request.getParameter("id_user"));
+            Usuario user = (Usuario)session.getAttribute("usuario");
+            if(user!=null){
+            if(id_user == user.getId_usuario()){           
             int id_venta = Integer.parseInt(request.getParameter("id_ven"));
             String hora = horaformat.format(fecha_completa);
             String fecha = fechaformat.format(fecha_completa);
@@ -128,7 +132,12 @@ public class mante_venta extends HttpServlet {
                     } else {
                         System.out.println("Hay problemas en el metodo v.Addventa, retorna un valor menor o igual a 0");
                     }
+            }else{
+                request.getRequestDispatcher("Error404.jsp").forward(request, response);
+            }
+                }else{
+                    request.getRequestDispatcher("Error404.jsp").forward(request, response);
+                }
                 }
             }
-
         }

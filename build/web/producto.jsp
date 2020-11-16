@@ -146,7 +146,7 @@
                                     <%}%>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                    <% if (usuario && cantidadProdCarrito!=0) {%>
+                                    <% if (usuario && cantidadProdCarrito!=0 && cantidadProdCarrito<productoEncontrado.getStock()) {%>
                                     <input type="submit" class="form-control btn btn-success" name="actualizar" value="Update Carrito">
                                     <%} else {%>
                                     <input type="submit" class="form-control btn btn-success" name="actualizar" value="Update Carrito" disabled>

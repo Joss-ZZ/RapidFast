@@ -34,6 +34,11 @@
       </nav>
     <!-- FIN BARRA DE NAVEGACION-->
     <%
+        Usuario use = (Usuario) session.getAttribute("usuario");
+        
+        if(use!=null){
+            request.getRequestDispatcher("Error404.jsp").forward(request, response);
+        }
         Conexion con=new Conexion();
         Usuario us=new Usuario(con);
       
@@ -140,9 +145,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
+                            
     </body>
 </html>

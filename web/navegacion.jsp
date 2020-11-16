@@ -17,13 +17,14 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+            <%if(user==null){%>
             <li class="nav-item active">
                 <a class="nav-link" href="registro.jsp">Registro<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="Recuperar_Cuenta.jsp" style=""> Olvidaste tu clave? </a>
             </li>
-            
+            <%}%>
         </ul>
         <!-- AGREGUE EL BUSCADOR-->
         <input type="search"  id="input-search" placeholder="Buscar producto" style="margin-right: 400px"
