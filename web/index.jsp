@@ -4,6 +4,7 @@
     Author     : PCGAMING
 --%>
 
+<%@page import="modelo.Reporteproducto_masvendido"%>
 <%@page import="modelo.Conexion"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="modelo.producto"%>
@@ -26,12 +27,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Magra&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet"> 
         <!--ICONOS -->
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <title>Rapidfast</title>
         <link rel="shortcut icon" href="admin/image/tienda.png"/> 
     </head>
     <%@include file="navegacion.jsp" %>
     <body>
+        
         <div class="row ">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
@@ -72,7 +75,7 @@
                 </div>
             </div>
         </div>  
-
+         
         <!-- VISTA DE LOS PRODUCTOS -->  
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">    
@@ -117,6 +120,57 @@
         </div>                    
 
         <!--  FIN --  VISTA DE LOS PRODUCTOS -->   
+          <%
+                    Conexion connCarrusel = new Conexion();
+                    Reporteproducto_masvendido carrusel = new Reporteproducto_masvendido(connCarrusel );
+                    LinkedList<Reporteproducto_masvendido> lista_carrusel = carrusel.ProductomasVendido();%>
+         <div class="carousel-inner">
+                        <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
+                                        <div class="row" id="promit">
+                                            <span id="p_caro">Productos mas vendidos</span>  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
+                                        <div class="row" id="promit">
+                                            <%for (Reporteproducto_masvendido c: lista_carrusel) {
+                                                   %>
+                                                       <div  id="inprod" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                                                            <div id="margen">
+                                                                <img  class="img-thumbnail" id="cargaimagen" src="<%=c.getImg()%>">
+                                                                <p id="product" ><%=c.getProducto()%></p>
+                                                                <div id="produ"class="row">
+                                                                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                                                        <div class="container">
+                                                                            <form method="post" action="producto.jsp" >
+                                                                                 <input type="hidden" value="<%=c.getId()%>" name="id_prod">  
+                                                                                 <input type="submit" id="btn" class="btn btn-danger" value="Ver Producto"> 
+                                                                            </form>
+                                                                                
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                                        <div class="row">
+                                                                            <!-- agregasr-->
+                                                                                <a id="canasta" href="" class="btn btn-success disabled" ><img id="newc" src="admin/image/tienda.png"></a>
+                                                                            <!-- /////////////-->
+                                                                        </div>
+                                                                        <div id="stockkk">
+                                                                            <span style="color: white;"><%=c.getStock()%></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>        
+                                                        </div> 
+                                              <%    }  %> 
+                                        </div>
+                                    </div>
+                                </div>   
+                        </div>
+                    </div>  
 
         <!-- MODALS -->
         <%@include file="modals.jsp" %>

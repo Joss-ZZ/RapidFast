@@ -25,6 +25,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet"> 
         <!--ICONOS -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a076d05399.js%22%3E"></script>
         <title>Productos</title>
          <!--estilo buscador  agregado-->
         <link rel="stylesheet" type="text/css" href="/RapidFast/admin/css/buscador.css">

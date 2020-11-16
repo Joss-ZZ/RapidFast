@@ -9,25 +9,15 @@
 %>
 
 <!--BARRA DE NAVEGACION-->
-<nav class="navbar navbar-expand-lg navbar navbar-dark fixed-top" id="" style="background-color: #6874f5;">
-    <a class="navbar-brand" href="index.jsp">Inicio</a>
+<nav class="navbar navbar-expand-lg navbar navbar-dark fixed-top" id="" style="background-color: #696c8e;">
+    <a class="navbar-brand" href="index.jsp">RapidFast <img src="admin/image/tienda.png" style="width: 24px;margin-top: -4px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <%if(user==null){%>
-            <li class="nav-item active">
-                <a class="nav-link" href="registro.jsp">Registro<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Recuperar_Cuenta.jsp" style=""> Olvidaste tu clave? </a>
-            </li>
-            <%}%>
-        </ul>
         <!-- AGREGUE EL BUSCADOR-->
-        <input type="search"  id="input-search" placeholder="Buscar producto" style="margin-right: 400px"
+        <input type="search"  id="input-search" placeholder="Buscar producto" style="margin-right: 250px"
                <% Conexion buscadorproducto=new Conexion();
                  producto bprod=new producto(buscadorproducto); %>
          >
@@ -66,9 +56,21 @@
                  </table>
              </div>
          </div>          
-      
+     
       <!-- FIN AGREGUE EL BUSCADOR-->
-      
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="registro.jsp">Registro<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Recuperar_Cuenta.jsp" style=""> Olvidaste tu clave? </a>
+            </li>
+            <li class="nav-item">
+                <% if (user != null) {%>
+                <a class="nav-link" href="Perfil.jsp"><i class="fas fa-user-circle"></i><h6 style="margin-left:30px;margin-top:-23px"><%=user.getNombre()%></h6></a>
+                <%}%>
+            </li>
+        </ul>
         <% if (user == null) {%>
             <a href="#" type="button" class="btn btn-light" data-toggle="modal" data-target="#ModalLogin" style="margin-right: 50px">Ingresar</a>
         <%} else {%>
@@ -87,7 +89,7 @@
                 </a>
             </div>
 
-            <a href="${pageContext.request.contextPath}/CerrarSesion" class=""style=""><i class="material-icons">exit_to_app</i></a>
+            <a href="${pageContext.request.contextPath}/CerrarSesion" style="color: #ff3333"><i class="fas fa-power-off"></i></a>
         <%}%>
         
       

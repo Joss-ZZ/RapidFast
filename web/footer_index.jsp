@@ -78,7 +78,7 @@
 </div>
 <div class="row">
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <nav class="navbar navbar-expand-md  navbar-dark fixed-bottom " id="" style="background-color:#6874f5;">
+        <nav class="navbar navbar-expand-md  navbar-dark fixed-bottom " id="" style="background-color:#696c8e;">
             <ul class="navbar-nav">
                 <li class="nav-item " >
                     <img id="logo2" src="admin/image/logo2.png">
