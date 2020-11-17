@@ -331,4 +331,25 @@ public class producto {
             System.out.println("Error en producto.actualizarStock: " + ex.getMessage());
         }
     }
+    
+   public producto buscarStockProd(int id_producto){
+        try {
+            String query =  "select id_producto, img_producto, nombre, caracteristica, stock from productos where id_producto="+id_producto;
+            Statement sentencia = conn.getConnection().createStatement();
+            ResultSet resultado = sentencia.executeQuery(query);
+            producto pro = new producto();
+            while(resultado.next()){            
+                pro.setId_producto(resultado.getInt("id_producto"));
+                pro.setImagen(resultado.getString("img_producto"));
+                pro.setNombre(resultado.getString("nombre"));              
+                pro.setCaracteristicas(resultado.getString("caracteristica"));
+                pro.setStock(resultado.getInt("stock"));
+            }          
+            conn.desconectar();
+            return pro;         
+        } catch (SQLException ex) {
+            System.out.println("Error en producto.buscarStockProd: " + ex.getMessage());
+        }
+        return null;
+    }
 }

@@ -206,38 +206,6 @@ public LinkedList<venta> ventalista(){
         return null;
     }
 
- ////////////////////////////////////venta solo su valor
-public LinkedList<venta> listasola(){
-        try {
-            conn = new Conexion();
-            String query =  "select \n" +
-                            "venta.id_venta as 'id_venta',\n" +
-                            "venta.id_usuario as 'id_usuario',\n" +
-                            "venta.fecha as 'fecha',\n" +
-                            "venta.hora as 'hora',\n" +
-                            "venta.estado as 'estado'\n" +
-                            "from VENTA;";
-            Statement sentencia = conn.getConnection().createStatement();
-            ResultSet resultado = sentencia.executeQuery(query);
-            LinkedList<venta> lista7;
-            lista7 = new LinkedList<venta>();
-            while(resultado.next()){
-                venta v = new venta();
-                v.setId_venta(resultado.getInt("id_venta"));
-                v.setId_usuario(Integer.parseInt(resultado.getString("id_usuario")));
-                v.setFecha(resultado.getString("fecha"));
-                v.setHora(resultado.getString("hora"));
-                v.setEstado(resultado.getString("estado"));
-                lista7.add(v);
-            }
-            conn.desconectar();
-            return lista7;
-        } catch (Exception e) {
-            System.out.println("Problema de conexion lista sola");
-        }
-        return null;
-    }
-
     public venta buscarVentaEnProcedo(int id_usuario){
         try {
             String query =  "select id_venta, id_usuario, fecha, hora, estado from venta where id_usuario="+id_usuario+" and estado='proceso'";
@@ -304,4 +272,25 @@ public LinkedList<venta> listasola(){
             System.out.println("Error en venta.updateventa: " + ex.getMessage());
         }
       }
+     
+      public LinkedList<venta> buscarCantidadDetalle(int id_venta){
+        try {
+            String query =  "select id_producto, cantidad from detalle where id_venta="+id_venta;
+            Statement sentencia = conn.getConnection().createStatement();
+            ResultSet resultado = sentencia.executeQuery(query);           
+            LinkedList<venta> venta = new LinkedList<>();
+            while(resultado.next()){
+                venta ven = new venta();
+                ven.setId_producto(resultado.getInt("id_producto"));
+                ven.setC_comprada(resultado.getInt("cantidad"));
+                venta.add(ven);
+            }
+            conn.desconectar();
+            return venta;
+        } catch (SQLException ex) {
+            System.out.println("Error en venta.buscarCantidadDetalle: " + ex.getMessage());
+        }
+        return null;
+    }
+     
 }

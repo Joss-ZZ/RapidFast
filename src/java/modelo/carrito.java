@@ -260,45 +260,7 @@ public class carrito {
         }
 
     }
-    ////////////////EDITAR comentarios  
 
-    public void EdiCarrComen(String titulo, String comentario, int id_venta, int id_produc) {
-        try {
-            String query = "UPDATE DETALLE SET titulo=?, ";
-            query = query + "comentario=? ";
-            query = query + "WHERE id_producto=? ";
-            query = query + "AND id_venta=? ";
-            PreparedStatement sentencia = conn.getConnection().prepareStatement(query);
-            sentencia.setString(1, titulo);
-            sentencia.setString(2, comentario);
-            sentencia.setInt(3, id_produc);
-            sentencia.setInt(4, id_venta);
-            sentencia.executeUpdate();
-            sentencia.close();
-            conn.desconectar();
-        } catch (SQLException ex) {
-            System.out.println("Error en carrito.EdiCarrComen: " + ex.getMessage());
-        }
-
-    }
-
-    public void EdiCarrCali(int calificacion, int id_venta, int id_produc) {
-        try {
-            String query = "UPDATE DETALLE SET calificacion=? ";
-            query = query + "WHERE id_producto=? ";
-            query = query + "AND id_venta=? ";
-            PreparedStatement sentencia = conn.getConnection().prepareStatement(query);
-            sentencia.setInt(1, calificacion);
-            sentencia.setInt(2, id_produc);
-            sentencia.setInt(3, id_venta);
-            sentencia.executeUpdate();
-            sentencia.close();
-            conn.desconectar();
-        } catch (SQLException ex) {
-            System.out.println("Error en carrito.EdiCarrCali: " + ex.getMessage());
-        }
-
-    }
     //ELIMINAR detalle
 
     public void Eliminardetalle(int id_venta, int id_product) {

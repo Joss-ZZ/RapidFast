@@ -102,6 +102,8 @@
 
 <!-- jQuery  PARA EL BUSCADOR-->
 <script src="/RapidFast/admin/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/RapidFast/admin/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
 <script src="/RapidFast/admin/js/jquery.dataTables_buscador.min.js"></script>
 <script src="/RapidFast/admin/js/search.js"></script>
