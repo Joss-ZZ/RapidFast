@@ -1,3 +1,4 @@
+<%@page import="modelo.WishList"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="modelo.carrito"%>
 <%@page import="modelo.Conexion"%>
@@ -57,70 +58,70 @@
                         Usuario user1 = (Usuario) session.getAttribute("usuario");
                         Integer id_venta1 = (Integer) session.getAttribute("idventa");
                         if (user1 == null) {%>
-                        <div class="row">
+                    <div class="row">
                         <h1 class="display-4">Agrega Productos al Carrito</h1>
-                        </div>
+                    </div>
 
-                        <%} else {
-                            Conexion conn1 = new Conexion();
-                            carrito carrito = new carrito(conn1);
-                            LinkedList<carrito> carrito_usuario = carrito.listarCarrito(id_venta1);
-                            for(int i = 0; i < carrito_usuario.size(); i++) {%>                   
-                    
+                    <%} else {
+                        Conexion conn1 = new Conexion();
+                        carrito carrito = new carrito(conn1);
+                        LinkedList<carrito> carrito_usuario = carrito.listarCarrito(id_venta1);
+                        for (int i = 0; i < carrito_usuario.size(); i++) {%>                   
+
 
 
                     <div id="st_first" class="row">
-                                        <div id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                            <div id="im_2" class="row">
-                                                <di>
-                                                    <img id="immodel" src="<%=carrito_usuario.get(i).getImagen() %>"> 
-                                                </di>
-                                            </div>
-                                        </div>
-                                        <div  id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                            <div id="im_2" class="row">
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <p id="vistaproducto"><%=carrito_usuario.get(i).getNom_product()%> - <%=carrito_usuario.get(i).getCaracat() %></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div  id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                           <div id="im_2" class="row">
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                    <p id="vistaproducto"><%=carrito_usuario.get(i).getDes_marca() %> / <%=carrito_usuario.get(i).getDes_categoria() %></p>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                    <p id="vistaproducto"><%=carrito_usuario.get(i).getCantidad() %></p>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <div id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                                            <div id="im_2" class="row">
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                    <p style="margin-bottom: 0%; " id="vistaproducto" >S\. <%=carrito_usuario.get(i).getPrecio_unidad() %></p>
-                                                    <p id="vistaproducto" ><%=carrito_usuario.get(i).getUnidad() %></p>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                    <p id="vistaproducto">S\. <%=carrito_usuario.get(i).getPrecio_total() %></p>
-                                                </div>
-                                            </div>
-                                            <div  class="row" >
-                                                <div id="modal_basura" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <div>
-                                                        <a type="button" class="close" href="/RapidFast/mante_carrito?car=<%=carrito_usuario.get(i).getId_venta()%>&pro=<%=carrito_usuario.get(i).getId_product() %>"><img id="bt_basura" src="/EXAMEN_T3/admin/image/basura.png"></a>        
-                                                    </div>
-                                                </div>    
-                                            </div>    
-                                        </div>
-                                    </div>                   
+                        <div id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <div id="im_2" class="row">
+                                <di>
+                                    <img id="immodel" src="<%=carrito_usuario.get(i).getImagen()%>"> 
+                                </di>
+                            </div>
+                        </div>
+                        <div  id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <div id="im_2" class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <p id="vistaproducto"><%=carrito_usuario.get(i).getNom_product()%> - <%=carrito_usuario.get(i).getCaracat()%></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div  id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <div id="im_2" class="row">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    <p id="vistaproducto"><%=carrito_usuario.get(i).getDes_marca()%> / <%=carrito_usuario.get(i).getDes_categoria()%></p>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    <p id="vistaproducto"><%=carrito_usuario.get(i).getCantidad()%></p>
+                                </div>
+                            </div> 
+                        </div>
+                        <div id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <div id="im_2" class="row">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    <p style="margin-bottom: 0%; " id="vistaproducto" >S\. <%=carrito_usuario.get(i).getPrecio_unidad()%></p>
+                                    <p id="vistaproducto" ><%=carrito_usuario.get(i).getUnidad()%></p>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    <p id="vistaproducto">S\. <%=carrito_usuario.get(i).getPrecio_total()%></p>
+                                </div>
+                            </div>
+                            <div  class="row" >
+                                <div id="modal_basura" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div>
+                                        <a type="button" class="close" href="/RapidFast/mante_carrito?car=<%=carrito_usuario.get(i).getId_venta()%>&pro=<%=carrito_usuario.get(i).getId_product()%>"><img id="bt_basura" src="/EXAMEN_T3/admin/image/basura.png"></a>        
+                                    </div>
+                                </div>    
+                            </div>    
+                        </div>
+                    </div>                   
                     <%
                             }
-                            }
+                        }
                     %>
 
                 </div>
                 <div class="modal-footer">
-                    <% if(user1 != null) {%>
+                    <% if (user1 != null) {%>
                     <a href="mante_venta?id_user=<%=user1.getId_usuario()%>&id_ven=<%=id_venta1%>" type="button" class="btn btn-success">Comprar</a>
                     <%}%>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>                
@@ -140,47 +141,53 @@
                     <h1 id="carrito"class="modal-title display-4">Lista de deseos</h1>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
                 </div>
-
-
+                <%if (user1 == null) {
+                                    } else {%>
+                <%}%>
                 <div class="modal-body">
-
+                    <%if (user1 == null) {%>
                     <div class="row">
                         <h1 class="display-4">Agrega Productos al Carrito</h1>
                     </div>
-
-
+                    <%} else {
+                        Conexion conn2 = new Conexion();
+                        WishList wish = new WishList(conn2);
+                        LinkedList<WishList> listaDeseos = wish.ListarWishList(user1.getId_usuario());
+                        for (WishList ws : listaDeseos) {%>
 
                     <div id="st_first" class="row">
                         <div id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                             <div id="im_2" class="row">
                                 <di>
-                                    <img id="immodel" src="  "> 
+                                    <img id="immodel" src="<%=ws.getImagen_pro()%>"> 
                                 </di>
                             </div>
                         </div>
                         <div  id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                             <div id="im_2" class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p id="vistaproducto">               </p>
+                                    <p id="vistaproducto"><%=ws.getNombre_pro()%> - <%=ws.getCaracteristica_pro()%></p>
                                 </div>
                             </div>
                         </div>
                         <div id="stilo" class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                             <div id="im_2" class="row">
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                    <p style="margin-bottom: 0%; " id="vistaproducto" >S\. </p>
+                                    <p style="margin-bottom: 0%; " id="vistaproducto" >S\. <%=ws.getPrecio_unidad()%></p>
                                 </div>                                   
                             </div>
                             <div  class="row" >
                                 <div id="modal_basura" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div>
-                                        <a type="button" class="close" href=" "><img id="bt_basura" src="admin/image/basura.png"></a>        
+                                        <a type="button" class="close" href="ControladorWishlist?id_user=<%=ws.getId_usuario()%>&id_pro=<%=ws.getId_producto()%>&accion=BorrarProducto"><img id="bt_basura" src="admin/image/basura.png"></a>        
                                     </div>
                                 </div>    
                             </div>    
                         </div>
                     </div>
-
+                    <%  }
+                        }
+                    %>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

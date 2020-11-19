@@ -154,7 +154,6 @@ public class Reporteproducto_masvendido {
     
     public LinkedList<Reporteproducto_masvendido> ProductomasVendido(){
         try {
-            conn.getConnection();
             String query = "SELECT * FROM reporte_productomasvendidos where stock>0 ORDER BY veces_compra DESC LIMIT 8";
             Statement sentencia = conn.getConnection().createStatement();
             ResultSet resultado = sentencia.executeQuery(query);
@@ -177,7 +176,7 @@ public class Reporteproducto_masvendido {
             conn.desconectar();
             return reportesproducto_masvendido;
         } catch (SQLException ex) {
-            System.out.println("Error en Reporteproducto_masvendido.Reporte_productomasVendido: " + ex.getMessage());
+            System.out.println("Error en Reporteproducto_masvendido.ProductomasVendido: " + ex.getMessage());
         }
         return null;
     }

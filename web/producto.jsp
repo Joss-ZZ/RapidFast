@@ -25,14 +25,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet"> 
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <title>Productos</title>
-         <!--estilo buscador  agregado-->
+        <!--estilo buscador  agregado-->
         <link rel="stylesheet" type="text/css" href="/RapidFast/admin/css/buscador.css">
         <!--fin estilo buscador -->
     </head>
     <%@include file="navegacion.jsp" %>
     <body>
 
-        <%  
+        <%
             Integer id_venta = (Integer) session.getAttribute("idventa");
             Integer id_product = 0;
             try {
@@ -44,12 +44,12 @@
             boolean usuario = false;
             int cantidadProdCarrito = 0;
             if (user == null) {
-            } else {       
-                usuario = true;    
+            } else {
+                usuario = true;
                 Conexion conn5 = new Conexion();
-                detalle det = new detalle(conn5);              
+                detalle det = new detalle(conn5);
                 cantidadProdCarrito = det.compararProducto(id_venta, id_product);
-            }                     
+            }
             Conexion conn = new Conexion();
             producto pro = new producto(conn);
             producto productoEncontrado = pro.buscarProducto(id_product);
@@ -125,10 +125,13 @@
                         </div>
                     </div>
 
+                    <%
+                        Usuario user3 = (Usuario) session.getAttribute("usuario");
+                    %>
                     <div class="row">                                        
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <p class="favorito">
-                                <input id="radio8" type="radio" name="corazon" value=""  onclick="">
+                                <input id="radio8" type="radio" name="corazon" value=""  onclick="favorito(<%=user3.getId_usuario()%>,<%=id_product%>)">
                                 <label  for="radio8" id="lavel23">♥</label><span id="vistaproducto5">Añadir a Favoritos</span>
                             </p>
                         </div>              
@@ -138,14 +141,14 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">   
-                                    <% if (usuario && cantidadProdCarrito==0) {%>
+                                    <% if (usuario && cantidadProdCarrito == 0) {%>
                                     <input type="submit" class="form-control btn btn-success" name="registrar"  value="Add Carrito" >
                                     <%} else {%>
                                     <input type="submit" class="form-control btn btn-success" name="registrar"  value="Add Carrito" disabled>
                                     <%}%>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                    <% if (usuario && cantidadProdCarrito!=0 && cantidadProdCarrito<productoEncontrado.getStock()) {%>
+                                    <% if (usuario && cantidadProdCarrito != 0 && cantidadProdCarrito < productoEncontrado.getStock()) {%>
                                     <input type="submit" class="form-control btn btn-success" name="actualizar" value="Update Carrito">
                                     <%} else {%>
                                     <input type="submit" class="form-control btn btn-success" name="actualizar" value="Update Carrito" disabled>
@@ -158,7 +161,7 @@
                 </div>
             </div>
         </form>
-                  
+
 
 
         <!-- MODALS -->
@@ -188,7 +191,7 @@
             });
 
             suma.addEventListener('click', () => {
-                if (cant === (stock-cantProdCarrito)) {
+                if (cant === (stock - cantProdCarrito)) {
                     alert('La cantidad no puede ser mayor al stock disponible')
                 } else {
                     cant++;
@@ -196,6 +199,10 @@
                     precioSubTotal.value = cant * valorUnit;
                 }
             });
+
+            function favorito(id_usuario, id_producto) {
+                window.open("/RapidFast/ControladorWishlist?id_user=" + id_usuario + "&id_pro=" + id_producto + "&accion=agregar", "_self");
+            }
         </script>
     </body>
 </html>
