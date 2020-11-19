@@ -18,7 +18,6 @@ import javax.servlet.http.HttpSession;
 import modelo.Conexion;
 import modelo.Usuario;
 import modelo.carrito;
-import modelo.historial;
 
 /**
  *
@@ -65,17 +64,7 @@ public class mante_carrito extends HttpServlet {
             car.Editarcarrito(id_venta, id_product, cantidad+cant_carrito);
             request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-            
-            if(request.getParameter("enviar") != null){
-                int id_venta=Integer.parseInt(request.getParameter("id_venta"));
-                int id_product=Integer.parseInt(request.getParameter("id_product"));
-                String titulo=request.getParameter("titulo");
-                String comentarios=request.getParameter("comentarios");
-                car.EdiCarrComen(titulo, comentarios, id_venta, id_product);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
-            
-          
+                  
         }
     }
     @Override

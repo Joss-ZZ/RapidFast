@@ -30,10 +30,20 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_dependants.add("/footer_index.jsp");
   }
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -60,6 +70,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -134,7 +145,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
                          
       out.write("\r\n");
       out.write("                         <tr>\r\n");
-      out.write("                             <td style=\"background-color:#ffffff;\">\r\n");
+      out.write("                            <td style=\"background-color:#ffffff;\">\r\n");
       out.write("                                 <form method=\"post\"\r\n");
       out.write("\t\t\t\t    action=\"producto.jsp\">\r\n");
       out.write("                                     <a>\r\n");
@@ -167,12 +178,18 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("     \r\n");
       out.write("      <!-- FIN AGREGUE EL BUSCADOR-->\r\n");
       out.write("        <ul class=\"navbar-nav mr-auto\">\r\n");
+      out.write("            ");
+if(user==null){
+      out.write("\r\n");
       out.write("            <li class=\"nav-item active\">\r\n");
       out.write("                <a class=\"nav-link\" href=\"registro.jsp\">Registro<span class=\"sr-only\">(current)</span></a>\r\n");
       out.write("            </li>\r\n");
       out.write("            <li class=\"nav-item\">\r\n");
       out.write("                <a class=\"nav-link\" href=\"Recuperar_Cuenta.jsp\" style=\"\"> Olvidaste tu clave? </a>\r\n");
       out.write("            </li>\r\n");
+      out.write("            ");
+}
+      out.write("\r\n");
       out.write("            <li class=\"nav-item\">\r\n");
       out.write("                ");
  if (user != null) {
@@ -222,7 +239,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("    <body>\r\n");
-      out.write("        \r\n");
+      out.write("\r\n");
       out.write("        <div class=\"row \">\r\n");
       out.write("            <div class=\"col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\">\r\n");
       out.write("\r\n");
@@ -263,7 +280,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>  \r\n");
-      out.write("         \r\n");
+      out.write("\r\n");
       out.write("        <!-- VISTA DE LOS PRODUCTOS -->  \r\n");
       out.write("        <div class=\"row\">\r\n");
       out.write("            <div class=\"col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\">    \r\n");
@@ -322,71 +339,71 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>                    \r\n");
       out.write("\r\n");
       out.write("        <!--  FIN --  VISTA DE LOS PRODUCTOS -->   \r\n");
-      out.write("          ");
+      out.write("        ");
 
-                    Conexion connCarrusel = new Conexion();
-                    Reporteproducto_masvendido carrusel = new Reporteproducto_masvendido(connCarrusel );
-                    LinkedList<Reporteproducto_masvendido> lista_carrusel = carrusel.ProductomasVendido();
+            Conexion connCarrusel = new Conexion();
+            Reporteproducto_masvendido carrusel = new Reporteproducto_masvendido(connCarrusel);
+            LinkedList<Reporteproducto_masvendido> lista_carrusel = carrusel.ProductomasVendido();
       out.write("\r\n");
-      out.write("         <div class=\"carousel-inner\">\r\n");
-      out.write("                        <div class=\"carousel-item active\">\r\n");
-      out.write("                                <div class=\"row\">\r\n");
-      out.write("                                    <div class=\"col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5\">\r\n");
-      out.write("                                        <div class=\"row\" id=\"promit\">\r\n");
-      out.write("                                            <span id=\"p_caro\">Productos mas vendidos</span>  \r\n");
-      out.write("                                        </div>\r\n");
-      out.write("                                    </div>\r\n");
-      out.write("                                </div>\r\n");
-      out.write("                                <div class=\"row \">\r\n");
-      out.write("                                    <div class=\"col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5\">\r\n");
-      out.write("                                        <div class=\"row\" id=\"promit\">\r\n");
-      out.write("                                            ");
-for (Reporteproducto_masvendido c: lista_carrusel) {
-                                                   
+      out.write("        <div class=\"carousel-inner\">\r\n");
+      out.write("            <div class=\"carousel-item active\">\r\n");
+      out.write("                <div class=\"row\">\r\n");
+      out.write("                    <div class=\"col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5\">\r\n");
+      out.write("                        <div class=\"row\" id=\"promit\">\r\n");
+      out.write("                            <span id=\"p_caro\">Productos mas vendidos</span>  \r\n");
+      out.write("                        </div>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("                <div class=\"row \">\r\n");
+      out.write("                    <div class=\"col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5\">\r\n");
+      out.write("                        <div class=\"row\" id=\"promit\">\r\n");
+      out.write("                            ");
+for (Reporteproducto_masvendido c : lista_carrusel) {
+                            
       out.write("\r\n");
-      out.write("                                                       <div  id=\"inprod\" class=\"col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3\">\r\n");
-      out.write("                                                            <div id=\"margen\">\r\n");
-      out.write("                                                                <img  class=\"img-thumbnail\" id=\"cargaimagen\" src=\"");
+      out.write("                            <div  id=\"inprod\" class=\"col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3\">\r\n");
+      out.write("                                <div id=\"margen\">\r\n");
+      out.write("                                    <img  class=\"img-thumbnail\" id=\"cargaimagen\" src=\"");
       out.print(c.getImg());
       out.write("\">\r\n");
-      out.write("                                                                <p id=\"product\" >");
+      out.write("                                    <p id=\"product\" >");
       out.print(c.getProducto());
       out.write("</p>\r\n");
-      out.write("                                                                <div id=\"produ\"class=\"row\">\r\n");
-      out.write("                                                                    <div class=\"col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8\">\r\n");
-      out.write("                                                                        <div class=\"container\">\r\n");
-      out.write("                                                                            <form method=\"post\" action=\"producto.jsp\" >\r\n");
-      out.write("                                                                                 <input type=\"hidden\" value=\"");
+      out.write("                                    <div id=\"produ\"class=\"row\">\r\n");
+      out.write("                                        <div class=\"col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8\">\r\n");
+      out.write("                                            <div class=\"container\">\r\n");
+      out.write("                                                <form method=\"post\" action=\"producto.jsp\" >\r\n");
+      out.write("                                                    <input type=\"hidden\" value=\"");
       out.print(c.getId());
       out.write("\" name=\"id_prod\">  \r\n");
-      out.write("                                                                                 <input type=\"submit\" id=\"btn\" class=\"btn btn-danger\" value=\"Ver Producto\"> \r\n");
-      out.write("                                                                            </form>\r\n");
-      out.write("                                                                                \r\n");
-      out.write("                                                                        </div>\r\n");
-      out.write("                                                                    </div>\r\n");
-      out.write("                                                                    <div class=\"col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\r\n");
-      out.write("                                                                        <div class=\"row\">\r\n");
-      out.write("                                                                            <!-- agregasr-->\r\n");
-      out.write("                                                                                <a id=\"canasta\" href=\"\" class=\"btn btn-success disabled\" ><img id=\"newc\" src=\"admin/image/tienda.png\"></a>\r\n");
-      out.write("                                                                            <!-- /////////////-->\r\n");
-      out.write("                                                                        </div>\r\n");
-      out.write("                                                                        <div id=\"stockkk\">\r\n");
-      out.write("                                                                            <span style=\"color: white;\">");
+      out.write("                                                    <input type=\"submit\" id=\"btn\" class=\"btn btn-danger\" value=\"Ver Producto\"> \r\n");
+      out.write("                                                </form>\r\n");
+      out.write("\r\n");
+      out.write("                                            </div>\r\n");
+      out.write("                                        </div>\r\n");
+      out.write("                                        <div class=\"col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\r\n");
+      out.write("                                            <div class=\"row\">\r\n");
+      out.write("                                                <!-- agregasr-->\r\n");
+      out.write("                                                <a id=\"canasta\" href=\"\" class=\"btn btn-success disabled\" ><img id=\"newc\" src=\"admin/image/tienda.png\"></a>\r\n");
+      out.write("                                                <!-- /////////////-->\r\n");
+      out.write("                                            </div>\r\n");
+      out.write("                                            <div id=\"stockkk\">\r\n");
+      out.write("                                                <span style=\"color: white;\">");
       out.print(c.getStock());
       out.write("</span>\r\n");
-      out.write("                                                                        </div>\r\n");
-      out.write("                                                                    </div>\r\n");
-      out.write("                                                                </div>\r\n");
-      out.write("                                                            </div>        \r\n");
-      out.write("                                                        </div> \r\n");
-      out.write("                                              ");
-    }  
-      out.write(" \r\n");
+      out.write("                                            </div>\r\n");
       out.write("                                        </div>\r\n");
       out.write("                                    </div>\r\n");
-      out.write("                                </div>   \r\n");
+      out.write("                                </div>        \r\n");
+      out.write("                            </div> \r\n");
+      out.write("                            ");
+    }
+      out.write(" \r\n");
       out.write("                        </div>\r\n");
-      out.write("                    </div>  \r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>   \r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>  \r\n");
       out.write("\r\n");
       out.write("        <!-- MODALS -->\r\n");
       out.write("        ");
@@ -621,6 +638,61 @@ for (Reporteproducto_masvendido c: lista_carrusel) {
       out.write("</div>\r\n");
       out.write("<!-- ****************************FIN DEL MODAL WISHLIST ***********************************-->  ");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("        <!-- Modal Productos quitados del carrito por falta de stock-->\r\n");
+      out.write("        <div class=\"modal fade\" id=\"ModalProductosQuitados\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n");
+      out.write("            <div class=\"modal-dialog\">\r\n");
+      out.write("                <div class=\"modal-content\">\r\n");
+      out.write("                    <div class=\"modal-header\">\r\n");
+      out.write("                        <h4 class=\"modal-title\" id=\"exampleModalLabel\">Productos quitados</h4>\r\n");
+      out.write("                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n");
+      out.write("                            <span aria-hidden=\"true\">&times;</span>\r\n");
+      out.write("                        </button>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                    <div class=\"modal-body\">\r\n");
+      out.write("                        <h6>Los siguientes productos fueron quitados, debido a que ya no contamos con la cantidad solicitada.</h6>\r\n");
+      out.write("                        \r\n");
+      out.write("                        <input id=\"quitarProd\" type=\"hidden\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${QuitarProducto}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                        <table id=\"table\" class=\"dataTable no-footer\" role=\"grid\" aria-describedby=\"table_info\" style=\"width: 100%;\">\r\n");
+      out.write("                            <thead>\r\n");
+      out.write("                                <tr role=\"row\"><td class=\"sorting_asc\" tabindex=\"0\" aria-controls=\"table\" rowspan=\"1\" colspan=\"1\" aria-label=\": activate to sort column descending\" style=\"width: 0px;\" aria-sort=\"ascending\"></td></tr>\r\n");
+      out.write("                            </thead>\r\n");
+      out.write("                            <tbody>\r\n");
+      out.write("                                ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("                            </tbody>\r\n");
+      out.write("                        </table>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                    <div class=\"modal-footer\">\r\n");
+      out.write("                        <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Aceptar</button>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("\r\n");
+      out.write("        <script>\r\n");
+      out.write("            function verproducto(idpro)\r\n");
+      out.write("            {\r\n");
+      out.write("                window.open(\"/RapidFast/producto.jsp?id_prod=\" + idpro + \"\", \"_self\");\r\n");
+      out.write("            }\r\n");
+      out.write("            $(document).ready(function () {\r\n");
+      out.write("                try {\r\n");
+      out.write("                    let QuitarProducto = document.getElementById('quitarProd').value;\r\n");
+      out.write("                    if (QuitarProducto === \"true\") {\r\n");
+      out.write("                        $('#ModalProductosQuitados').modal('show');\r\n");
+      out.write("                    }\r\n");
+      out.write("                } catch (e) {\r\n");
+      out.write("\r\n");
+      out.write("                }\r\n");
+      out.write("            });\r\n");
+      out.write("        </script>  \r\n");
+      out.write("\r\n");
       out.write("        <!-- FOOTER-->\r\n");
       out.write("        ");
       out.write("\r\n");
@@ -668,9 +740,9 @@ for (Reporteproducto_masvendido c: lista_carrusel) {
       out.write("                                        <img id=\"ndato\" src=\"admin/image/google.png\">\r\n");
       out.write("                                    </div>\r\n");
       out.write("                                    <div class=\"col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8\">\r\n");
-      out.write("                                        <p id=\"sip\">RapidFast@gmail.com</p>\r\n");
-      out.write("                                        <p id=\"sip\">servicio@RapidFast.com</p>\r\n");
-      out.write("                                        <p id=\"sip\">RapidFast@htmail.com</p>\r\n");
+      out.write("                                        <p id=\"sip\">bodegahuascaran@gmail.com</p>\r\n");
+      out.write("                                        <p id=\"sip\">serviciohuascaran@RapidFast.com</p>\r\n");
+      out.write("                                        \r\n");
       out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
@@ -716,6 +788,10 @@ for (Reporteproducto_masvendido c: lista_carrusel) {
       out.write("                <li class=\"nav-item\" >\r\n");
       out.write("                    <a class=\"nav-link\" href=\"https://www.youtube.com/\" target=\"_blank\"><img id=\"logoabajo\" src=\"admin/image/youtube.png\" class=\"rounded-circle\"></a>\r\n");
       out.write("                </li>\r\n");
+      out.write("                <li class=\"nav-item\" >\r\n");
+      out.write("                    <a class=\"nav-link\" href=\"#\" style=\"color: #ffffff; margin-left: 650px\"><img id=\"logoabajo\" src=\"admin/image/iconobodega.png\" class=\"rounded-circle\" style=\"margin-left:-90px;width:32px;height:32px\"> Bodega Huascaran</a>\r\n");
+      out.write("                    <span style=\"color: #ffffff; margin-left: 600px\">RUC: 10093204714</span>\r\n");
+      out.write("                </li>\r\n");
       out.write("            </ul>\r\n");
       out.write("        </nav>\r\n");
       out.write("    </div>\r\n");
@@ -723,21 +799,13 @@ for (Reporteproducto_masvendido c: lista_carrusel) {
       out.write("\r\n");
       out.write("<!-- jQuery  PARA EL BUSCADOR-->\r\n");
       out.write("<script src=\"/RapidFast/admin/js/jquery.min.js\"></script>\r\n");
+      out.write("<!-- Bootstrap 4 -->\r\n");
+      out.write("<script src=\"/RapidFast/admin/js/bootstrap.bundle.min.js\"></script>\r\n");
       out.write("<!-- DataTables -->\r\n");
       out.write("<script src=\"/RapidFast/admin/js/jquery.dataTables_buscador.min.js\"></script>\r\n");
       out.write("<script src=\"/RapidFast/admin/js/search.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\" src=\"/RapidFast/admin/js/search.js\"></script>");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("        \r\n");
-      out.write("        <script>\r\n");
-      out.write("            function verproducto(idpro)\r\n");
-      out.write("            {\r\n");
-      out.write("                window.open(\"/RapidFast/producto.jsp?id_prod=\" + idpro + \"\", \"_self\");\r\n");
-      out.write("            }\r\n");
-      out.write("        </script>\r\n");
-      out.write("        \r\n");
-      out.write("  \r\n");
       out.write("\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
@@ -753,5 +821,60 @@ for (Reporteproducto_masvendido c: lista_carrusel) {
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productosQuitados}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("productoQuitado");
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                                    <tr role=\"row\" class=\"odd\">\r\n");
+          out.write("                                        <td style=\"background-color:#ffffff;\" class=\"sorting_1\">\r\n");
+          out.write("                                            <a>\r\n");
+          out.write("                                                <button type=\"submit\" class=\"SubmitButtonClass btn-light\" style=\"border:none; padding:0px\"> <img src=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productoQuitado.getImagen()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" style=\"width:60px ;\"></button> \r\n");
+          out.write("                                                <span style=\"margin-left:5px\">\r\n");
+          out.write("                                                    ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productoQuitado.getNombre()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\r\n");
+          out.write("                                                    <h6 style=\"margin-left:68px;margin-top:-20px\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productoQuitado.getCaracteristicas()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</h6>\r\n");
+          out.write("                                                </span>\r\n");
+          out.write("                                                <input type=\"hidden\" value=\"6\" name=\"id_prod\">  \r\n");
+          out.write("\r\n");
+          out.write("                                            </a> \r\n");
+          out.write("                                        </td>\r\n");
+          out.write("                                    </tr>\r\n");
+          out.write("                                ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
   }
 }

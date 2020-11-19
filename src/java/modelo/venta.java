@@ -31,6 +31,7 @@ public class venta {
     private String hora;
     private String estado;
     Conexion conn;
+    private double pre_total;
 
     public venta(String nom_pro, String carac, int c_comprada, float p_unitario, float preciostotal) {
         this.nom_pro = nom_pro;
@@ -153,6 +154,14 @@ public class venta {
         this.estado = estado;
     }
 
+    public double getPre_total() {
+        return pre_total;
+    }
+
+    public void setPre_total(double pre_total) {
+        this.pre_total = pre_total;
+    }
+
     
 
     
@@ -202,38 +211,6 @@ public LinkedList<venta> ventalista(){
             return lista6;
         } catch (SQLException ex) {
             System.out.println("Error en venta.ventalista: " + ex.getMessage());
-        }
-        return null;
-    }
-
- ////////////////////////////////////venta solo su valor
-public LinkedList<venta> listasola(){
-        try {
-            conn = new Conexion();
-            String query =  "select \n" +
-                            "venta.id_venta as 'id_venta',\n" +
-                            "venta.id_usuario as 'id_usuario',\n" +
-                            "venta.fecha as 'fecha',\n" +
-                            "venta.hora as 'hora',\n" +
-                            "venta.estado as 'estado'\n" +
-                            "from VENTA;";
-            Statement sentencia = conn.getConnection().createStatement();
-            ResultSet resultado = sentencia.executeQuery(query);
-            LinkedList<venta> lista7;
-            lista7 = new LinkedList<venta>();
-            while(resultado.next()){
-                venta v = new venta();
-                v.setId_venta(resultado.getInt("id_venta"));
-                v.setId_usuario(Integer.parseInt(resultado.getString("id_usuario")));
-                v.setFecha(resultado.getString("fecha"));
-                v.setHora(resultado.getString("hora"));
-                v.setEstado(resultado.getString("estado"));
-                lista7.add(v);
-            }
-            conn.desconectar();
-            return lista7;
-        } catch (Exception e) {
-            System.out.println("Problema de conexion lista sola");
         }
         return null;
     }
@@ -304,4 +281,55 @@ public LinkedList<venta> listasola(){
             System.out.println("Error en venta.updateventa: " + ex.getMessage());
         }
       }
+     
+      public LinkedList<venta> buscarCantidadDetalle(int id_venta){
+        try {
+            String query =  "select id_producto, cantidad from detalle where id_venta="+id_venta;
+            Statement sentencia = conn.getConnection().createStatement();
+            ResultSet resultado = sentencia.executeQuery(query);           
+            LinkedList<venta> venta = new LinkedList<>();
+            while(resultado.next()){
+                venta ven = new venta();
+                ven.setId_producto(resultado.getInt("id_producto"));
+                ven.setC_comprada(resultado.getInt("cantidad"));
+                venta.add(ven);
+            }
+            conn.desconectar();
+            return venta;
+        } catch (SQLException ex) {
+            System.out.println("Error en venta.buscarCantidadDetalle: " + ex.getMessage());
+        }
+        return null;
+    }
+     
+      
+    
+    public LinkedList<venta> buscarPedidosCliente(int id_usuario){
+        try {
+            String query = "select * from vista2  where id_us="+id_usuario;
+                    
+            Statement sentencia = conn.getConnection().createStatement();
+            ResultSet resultado = sentencia.executeQuery(query);           
+            LinkedList<venta> venta = new LinkedList<>();
+            while(resultado.next()){
+                venta ven = new venta();
+                ven.setId_venta(resultado.getInt("id_venta"));
+                ven.setFecha(resultado.getString("fecha"));
+                ven.setHora(resultado.getString("hora"));
+                ven.setId_usuario(resultado.getInt("id_us"));
+                ven.setC_comprada(resultado.getInt("cantidad_productos"));
+                ven.setPre_total(resultado.getDouble("total"));
+                ven.setEstado(resultado.getString("estado"));
+                venta.add(ven);
+            }
+            conn.desconectar();
+            return venta;
+        } catch (SQLException ex) {
+            System.out.println("Error en venta. buscarPedidosCliente: " + ex.getMessage());
+        }
+        return null;
+    }
+      
+      
+      
 }

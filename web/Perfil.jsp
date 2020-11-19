@@ -4,6 +4,7 @@
     Author     : PCGAMING
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="modelo.venta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,42 +31,205 @@
         <link rel="shortcut icon" href="admin/image/tienda.png"/> 
     </head>
       <%@include file="navegacion.jsp" %>
-    <body>
-        <br><br>
-   
-            <div class="col-md-9">
+      <body>
+          <br><br><br>
+          <section id="productos" class="padded">
+              <div class="container">
+                  <h2>Mi Perfil</h2>
+                  <div class="row">
+                      <div class="col-md-3">
+                          <br>
+                          <h5 class="text-uppercase">
+                             <%=user.getNombre()%> <%=user.getApellido()%> 
+                          </h5>
+                          <h6>
+                              Dirección
+                          </h6>
+                          <span>
+                             <%=user.getDireccion()%>  
+                          </span>
 
-                  <table class="table table-striped table-bordered table-hover">
-                    <caption>Abril 2020</caption>
-                    <thead class="thead-dark">
-                      <tr>
-                        <th>Cod</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Marca</th>
-                        <th>Precio</th>
-                        <th>Precio</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    
-                            <tr>
-                              
-                               
-                               
-                            
-                            </tr> 
-                            <tr>
-                              
-                            </tr>
-                  
-                          
-                    </tbody>   
-                  </table>
+                      </div>
+                      <div class="col-md-9">
 
-            </div>
-      
-    </body>
+                          <ul class="nav nav-tabs" id="myTab" role="tablist">
+                              <li class="nav-item">
+                                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#lista" role="tab" aria-controls="home" aria-selected="true">Mis Pedidos</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#cuadricula" role="tab" aria-controls="profile" aria-selected="false">WhisList</a>
+                              </li>
+
+                          </ul>
+                          <div class="tab-content" id="myTabContent">
+                              <div class="tab-pane fade show active" id="lista" role="tabpanel" aria-labelledby="home-tab">          
+                                  <table class="table table-striped table-bordered table-hover">
+                                      <% Conexion buscadorpersona = new Conexion();
+                       venta bper = new venta(buscadorpersona); %>
+                                      <thead class="thead-dark text-center">
+                                          <tr>
+                                              <th>Nro-Venta</th>
+                                              <th>Fecha y Hora</th>
+                                              <th>Cantidad Productos</th>
+                                              <th>Total</th>
+                                              <th>Estado</th>
+                                              <th>Detalle</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody class="text-center">
+                                          <%
+                                              LinkedList<venta> mostrarpedidos;
+                                              mostrarpedidos = bper.buscarPedidosCliente(user.getId_usuario());
+                                              for (venta j : mostrarpedidos) {
+                                                 double totaltal=j.getPre_total();
+                                          %>
+                                          <tr>
+                                              <td><%=j.getId_venta()%></td>  
+                                              <td><%=j.getFecha()%> , <%=j.getHora()%> </td> 
+                                              <td><%=j.getC_comprada()%></td>  
+                                              <td> <% DecimalFormat decimales = new DecimalFormat("0.00");%> 
+                                              S/. <%=decimales.format(totaltal)%> </td>
+                                              <td><%=j.getEstado()%></td>
+                                             <form action="DetallePedido.jsp" method="post">
+                                                 <td><button type="submit"class="btn btn-success"><i class="far fa-plus-square"></i></button></td>
+                                                 <input type="hidden" value="<%=j.getId_venta()%>" name="id_venta">  
+                                                 <input type="hidden" value="<%=j.getFecha()%>" name="fecha">  
+                                                 <input type="hidden" value="<%=j.getHora()%>" name="hora">  
+                                                 <input type="hidden" value="<%=j.getEstado()%>" name="estado"> 
+                                                 <input type="hidden" value="<%=j.getPre_total()%>" name="total_precio">
+                                             </form>
+                                             
+                                          </tr>
+
+                                          <%}%>
+                                      </tbody>   
+                                  </table>
+                              </div>
+                              <div class="tab-pane fade" id="cuadricula" role="tabpanel" aria-labelledby="profile-tab">
+                                  <div class="card-columns">
+
+                                      <div class="card">
+                                          <img src="productos/fotogr1.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto1</h5>
+                                              <p>Descripción1</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr2.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto2</h5>
+                                              <p>Descripción2</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr3.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto3</h5>
+                                              <p>Descripción3</p>
+                                          </div>    
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr4.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto4</h5>
+                                              <p>Descripción4</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr5.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto5</h5>
+                                              <p>Descripción5</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr6.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto6</h5>
+                                              <p>Descripción6</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr7.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto7</h5>
+                                              <p>Descripción7</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr8.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto8</h5>
+                                              <p>Descripción8</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr9.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto9</h5>
+                                              <p>Descripción9</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr10.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto10</h5>
+                                              <p>Descripción10</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr11.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto11</h5>
+                                              <p>Descripción11</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr12.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto12</h5>
+                                              <p>Descripción12</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr13.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto13</h5>
+                                              <p>Descripción13</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr14.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto14</h5>
+                                              <p>Descripción14</p>
+                                          </div>
+                                      </div>
+                                      <div class="card">
+                                          <img src="productos/fotogr15.jpg" alt="" class="card-img-top">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Producto15</h5>
+                                              <p>Descripción15</p>
+                                          </div>
+                                      </div>
+                                  </div><!-- card-columns -->
+                              </div>
+                          </div>
+
+                      </div>
+                  </div><!-- row -->
+              </div><!-- container -->
+          </section><!-- productos -->       
+
+
+
+
+
+
+
+
+      </body>
     
      <%@include file="footer_index.jsp" %>
 </html>

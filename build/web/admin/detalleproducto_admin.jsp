@@ -43,8 +43,8 @@
                             <th class="text-center" >N° VENTA</th>
                             <th class="text-center" >PRODUCTO</th>
                             <th class="text-center" >CANTIDAD</th>
-                            <th class="text-center" >PRECIO</th>     
-                            <th class="text-center" >SUBTOTAL</th>   
+                            <th class="text-center" >PRECIO UNITARIO</th>     
+                            <th class="text-center" >TOTAL</th>   
                         </tr>
                     </thead>
                <%
@@ -62,8 +62,8 @@
                             <td class="text-center"><%=Reporte_prodclientes.get(i).getId()%></td>
                             <td class="text-center"><%=Reporte_prodclientes.get(i).getProducto()%></td>        
                             <td class="text-center"><%=Reporte_prodclientes.get(i).getCantidad()%></td> 
-                            <td class="text-center"><%=Reporte_prodclientes.get(i).getPrecio()%></td> 
-                            <td class="text-center"><%=Reporte_prodclientes.get(i).getCantidad()*Reporte_prodclientes.get(i).getPrecio()%></td>       
+                            <td class="text-center"><%=Reporte_prodclientes.get(i).getPrecio_unitario()%></td> 
+                            <td class="text-center"><%=Reporte_prodclientes.get(i).getPrecio()%></td>       
                         </tr> 
                         <%}%>
                     </tbody>

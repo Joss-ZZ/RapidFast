@@ -20,16 +20,28 @@ public class Detalleproducto {
     private String producto;
     private int cantidad;
     private Double precio;
+    private Double precio_unitario;
     Conexion conn;
     public Detalleproducto() {
     }
 
-    public Detalleproducto(int id, String producto, int cantidad, Double precio) {
+    public Detalleproducto(int id, String producto, int cantidad, Double precio, Double precio_unitario) {
         this.id = id;
         this.producto = producto;
         this.cantidad = cantidad;
         this.precio = precio;
+        this.precio_unitario = precio_unitario;
     }
+
+    public Double getPrecio_unitario() {
+        return precio_unitario;
+    }
+
+    public void setPrecio_unitario(Double precio_unitario) {
+        this.precio_unitario = precio_unitario;
+    }
+
+  
 
     public int getId() {
         return id;
@@ -66,6 +78,8 @@ public class Detalleproducto {
     public Detalleproducto(Conexion conn) {
         this.conn = conn;
     }
+    
+    
 
        public LinkedList<Detalleproducto> Detalleproductoss(){
         try {
@@ -81,6 +95,7 @@ public class Detalleproducto {
                 r.setProducto(resultado.getString("productos"));
                 r.setCantidad(Integer.parseInt(resultado.getString("cantidad")));
                 r.setPrecio(Double.parseDouble(resultado.getString("precio")));
+                r.setPrecio_unitario(Double.parseDouble(resultado.getString("precio_unitario")));
                 reportesdetalles.add(r);
             }
             conn.desconectar();

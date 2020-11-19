@@ -16,7 +16,7 @@
     </head>
        <!--BARRA DE NAVEGACION--> 
         <!--BARRA DE NAVEGACION--> 
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark " style="background-color: #696c8e;">
         <a class="navbar-brand" href="index.jsp">Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

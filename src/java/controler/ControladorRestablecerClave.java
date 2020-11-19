@@ -34,8 +34,16 @@ public class ControladorRestablecerClave extends HttpServlet {
         System.out.println(id  +"---" + cambiarclave);
         try (PrintWriter out = response.getWriter()) {
         Usuario us= new Usuario(con);
-        us.Editarclave(id,cambiarclave, id);
-        response.sendRedirect("index.jsp");
+        us.Editarclave(id,cambiarclave, id);     
+        //response.sendRedirect("index.jsp");
+        out.println("<html><head><script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@10\"></script></head><body onload=\"Swal.fire({\n" +
+        "  title: 'Se cambio su contraseña!',\n" +
+        "  text: 'Ahora podrá acceder a la plataforma',\n" +
+        "  icon: 'success',\n" +
+        "  showConfirmButton: false,\n" +
+        "  timer: 2500\n"+       
+        "}); window.location='index.jsp'\"></body></html>");
+        out.close();
         }
     }
 

@@ -155,7 +155,7 @@ public class Reporteproducto_masvendido {
     public LinkedList<Reporteproducto_masvendido> ProductomasVendido(){
         try {
             conn.getConnection();
-            String query = "SELECT * FROM reporte_productomasvendidos ORDER BY veces_compra DESC LIMIT 8";
+            String query = "SELECT * FROM reporte_productomasvendidos where stock>0 ORDER BY veces_compra DESC LIMIT 8";
             Statement sentencia = conn.getConnection().createStatement();
             ResultSet resultado = sentencia.executeQuery(query);
             LinkedList<Reporteproducto_masvendido> reportesproducto_masvendido;

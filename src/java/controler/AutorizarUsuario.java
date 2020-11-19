@@ -22,7 +22,6 @@ import javax.servlet.http.HttpSession;
 import modelo.Conexion;
 import modelo.EnviarToken;
 import modelo.Usuario;
-import modelo.historial;
 import modelo.token;
 import modelo.venta;
 

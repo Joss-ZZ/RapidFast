@@ -11,14 +11,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="/RapidFast/admin/css/stylehome.css">
+        <link rel="stylesheet" type="text/css" href="/RapidFast/admin/css/bar.css">
+        <!--estilo buscador -->
+        <link rel="stylesheet" type="text/css" href="/RapidFast/admin/css/buscador.css">
+        <!--fin estilo buscador -->
+        <script type="text/javascript" src="/EXAMEN_T3/admin/js/progresbar.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Magra&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet"> 
+        <!--ICONOS -->
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <title>Registrarse</title>
         <script type="text/javascript" src="/RapidFast/admin/js/validariniciar.js"></script>
         <link  href="admin/css/stylehome.css" rel="stylesheet" />
     </head>
    <!--BARRA DE NAVEGACION--> 
-    <nav class="navbar navbar-expand-lg navbar navbar-dark" style="background-color: #6874f5;">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark" style="background-color: #696c8e;">
         <a class="navbar-brand" href="index.jsp">Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -51,12 +66,15 @@
          }
     %>
     <body>
+    <!--modals--> 
+        <%@include file="modals.jsp" %>   
+    <!-- FIN modals-->   
         <div class="container-lg">
             <div class="row">
                 <div class="col-4 sm-4">
                     <br><br><br><br>
                     <img src="admin/image/tienda.png" class="imgRedonda-logo" style="">
-                    <h6  style="margin-left: 40px;margin-top: 10px">Tienda RapidFast</h6>
+                    <h6  style="margin-left: 10px;margin-top: 10px">Tienda Bodega Huascaran</h6>
                 </div>
                 <div class="col-6">
                     <form  name="iniciar" id="inciar" action="/RapidFast/mante_usuario" method="post" class="">    
@@ -145,6 +163,7 @@
                 </div>
             </div>
         </div>
-                            
+                    <!-- FOOTER-->
+        <%@include file="footer_index.jsp" %>                
     </body>
 </html>

@@ -47,9 +47,9 @@
                                         <img id="ndato" src="admin/image/google.png">
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                                        <p id="sip">RapidFast@gmail.com</p>
-                                        <p id="sip">servicio@RapidFast.com</p>
-                                        <p id="sip">RapidFast@htmail.com</p>
+                                        <p id="sip">bodegahuascaran@gmail.com</p>
+                                        <p id="sip">serviciohuascaran@RapidFast.com</p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -95,6 +95,10 @@
                 <li class="nav-item" >
                     <a class="nav-link" href="https://www.youtube.com/" target="_blank"><img id="logoabajo" src="admin/image/youtube.png" class="rounded-circle"></a>
                 </li>
+                <li class="nav-item" >
+                    <a class="nav-link" href="#" style="color: #ffffff; margin-left: 650px"><img id="logoabajo" src="admin/image/iconobodega.png" class="rounded-circle" style="margin-left:-90px;width:32px;height:32px"> Bodega Huascaran</a>
+                    <span style="color: #ffffff; margin-left: 600px">RUC: 10093204714</span>
+                </li>
             </ul>
         </nav>
     </div>
@@ -102,6 +106,8 @@
 
 <!-- jQuery  PARA EL BUSCADOR-->
 <script src="/RapidFast/admin/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/RapidFast/admin/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
 <script src="/RapidFast/admin/js/jquery.dataTables_buscador.min.js"></script>
 <script src="/RapidFast/admin/js/search.js"></script>

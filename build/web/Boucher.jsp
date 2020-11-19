@@ -77,11 +77,12 @@
                                     <P id="en_to">${dni}</P>
                                     <P id="en_to">${correo}</P>
                                 </div>
-                                <div id="ds1" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                    <P id="en_to">Rapidfast</P>
+                                <div id="ds1" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">              
+                                    <P id="en_to">Bodega Huascaran</P>
                                     <P id="en_to">Jro las chamarras 547</P>
                                     <P id="en_to">987845986</P>
-                                    <P id="en_to">rapidfast@gmail.com</P>
+                                    <P id="en_to">bodegahuascaran@gmail.com</P>
+                                    <img src="admin/image/iconobodega.png" style="width: 164px; margin-left:225px;margin-top: -90px">
                                 </div>
                             </div>
                             <div class="row">
@@ -99,8 +100,8 @@
                                             <td id="id_d" >${producto.getNom_pro() }</td>
                                             <td id="id_d" >${producto.getCarac() }</td>
                                             <td id="id_d" >${producto.getC_comprada() }</td>
-                                            <td id="id_d" pattern="^\d*(\.\d{0,2})?$">${producto.getP_unitario() }</td>
-                                            <td id="id_d" pattern="^\d*(\.\d{0,2})?$">${producto.getPreciostotal() }</td>
+                                            <td id="id_d" pattern="^\d*(\.\d{0,2})?$">S/. ${producto.getP_unitario() }</td>
+                                            <td id="id_d" pattern="^\d*(\.\d{0,2})?$">S/. ${producto.getPreciostotal() }</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -115,19 +116,19 @@
                                         <tbody>
                                             <tr>
                                                 <td id="p_s">SUBTOTAL</td>
-                                                <td id="p_le" pattern="^\d*(\.\d{0,2})?$">${subtotal}</td>
+                                                <td id="p_le" pattern="^\d*(\.\d{0,2})?$">S/. ${subtotal}</td>
                                             </tr>
                                             <tr>
                                                 <td id="p_s">IGV(18%)</td>
-                                                <td id="p_le" pattern="^\d*(\.\d{0,2})?$">${total}</td>
+                                                <td id="p_le" pattern="^\d*(\.\d{0,2})?$">S/. ${total}</td>
                                             </tr>
                                             <tr>
                                                 <td id="p_s" class="table-danger">TOTAL</td>
-                                                <td id="p_le" class="table-danger">${totaltal}</td>
+                                                <td id="p_le" class="table-danger">S/. ${totaltal}</td>
                                             </tr>                                
                                         </tbody>
-                                    </table>
-                                    <button id="btnImprimir" class="mt-2 btn btn-success" onclick="window.print()">Imprimir</button>                                
+                                    </table>                
+                                            <button  type="button"id="btnImprimir" class="mt-2 btn btn-success" onclick="window.print()">Imprimir</button>                                                       
                                 </div>
                             </div>        
                         </div>

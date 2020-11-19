@@ -3,6 +3,7 @@
     Created on : 21-jun-2020, 13:15:30
     Author     : PCGAMING
 --%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="modelo.Conexion"%>
 <%@page import="modelo.Reporteproducto_masvendido"%>
 <%@page import="java.util.LinkedList"%>
@@ -52,6 +53,7 @@
                     </thead>
                <%
                 Conexion con =new Conexion();
+                DecimalFormat decimales = new DecimalFormat("0.00");
                 Reporteproducto_masvendido reporteprod_vendido = new Reporteproducto_masvendido(con);
                 LinkedList<Reporteproducto_masvendido> Reporte_prodmasvendido;
                 Reporte_prodmasvendido= reporteprod_vendido.Reporte_productomasVendido(); 
@@ -70,7 +72,7 @@
                             <td class="text-center"><%=Reporte_prodmasvendido.get(i).getPrecio()%></td>     
                             <td class="text-center"><%=Reporte_prodmasvendido.get(i).getTotal_cantidad()%></td>     
                             <td class="text-center"><%=Reporte_prodmasvendido.get(i).getVeces_compra()%></td>     
-                            <td class="text-center"><%=Reporte_prodmasvendido.get(i).getPrecio()*Reporte_prodmasvendido.get(i).getTotal_cantidad()%></td>     
+                            <td class="text-center"><%=decimales.format(Reporte_prodmasvendido.get(i).getPrecio()*Reporte_prodmasvendido.get(i).getTotal_cantidad())%></td>     
                         </tr> 
                         <%}%>
                     </tbody>

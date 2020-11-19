@@ -3,22 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/src/java/controler/ValidarCuenta.java</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/index.jsp</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/mispedidos.jsp</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/css/stylehome.css</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/css/buscador.css</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/src/java/modelo/Conexion.java</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/modals.jsp</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/footer_index.jsp</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/src/java/controler/RecuperarCuenta.java</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/src/java/modelo/venta.java</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/cliente.jsp</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/producto.jsp</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/src/java/controler/mante_venta.java</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/reporteproductos_tienda.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/reporte_general.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/Boucher.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/Recuperar_Cuenta.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/reporteventa_producto.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/detalleproducto_admin.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/reporteproducto_cliente.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/DetallePedido.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/reporte_productomasvendido.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/src/java/modelo/Detalleproducto.java</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/src/java/controler/ControladorReporteprodtienda.java</file>
             <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/admin/pedidos.jsp</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/navegacion.jsp</file>
-            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/Perfil.jsp</file>
+            <file>file:/C:/Users/PCGAMING/Documents/NetBeansProjects/RapidFast/web/registro.jsp</file>
         </group>
     </open-files>
 </project-private>

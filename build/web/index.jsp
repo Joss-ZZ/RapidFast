@@ -4,6 +4,7 @@
     Author     : PCGAMING
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="modelo.Reporteproducto_masvendido"%>
 <%@page import="modelo.Conexion"%>
 <%@page import="java.util.LinkedList"%>
@@ -34,7 +35,7 @@
     </head>
     <%@include file="navegacion.jsp" %>
     <body>
-        
+
         <div class="row ">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
@@ -75,7 +76,7 @@
                 </div>
             </div>
         </div>  
-         
+
         <!-- VISTA DE LOS PRODUCTOS -->  
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">    
@@ -120,72 +121,126 @@
         </div>                    
 
         <!--  FIN --  VISTA DE LOS PRODUCTOS -->   
-          <%
-                    Conexion connCarrusel = new Conexion();
-                    Reporteproducto_masvendido carrusel = new Reporteproducto_masvendido(connCarrusel );
-                    LinkedList<Reporteproducto_masvendido> lista_carrusel = carrusel.ProductomasVendido();%>
-         <div class="carousel-inner">
-                        <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
-                                        <div class="row" id="promit">
-                                            <span id="p_caro">Productos mas vendidos</span>  
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
-                                        <div class="row" id="promit">
-                                            <%for (Reporteproducto_masvendido c: lista_carrusel) {
-                                                   %>
-                                                       <div  id="inprod" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                                                            <div id="margen">
-                                                                <img  class="img-thumbnail" id="cargaimagen" src="<%=c.getImg()%>">
-                                                                <p id="product" ><%=c.getProducto()%></p>
-                                                                <div id="produ"class="row">
-                                                                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                                                                        <div class="container">
-                                                                            <form method="post" action="producto.jsp" >
-                                                                                 <input type="hidden" value="<%=c.getId()%>" name="id_prod">  
-                                                                                 <input type="submit" id="btn" class="btn btn-danger" value="Ver Producto"> 
-                                                                            </form>
-                                                                                
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                                                        <div class="row">
-                                                                            <!-- agregasr-->
-                                                                                <a id="canasta" href="" class="btn btn-success disabled" ><img id="newc" src="admin/image/tienda.png"></a>
-                                                                            <!-- /////////////-->
-                                                                        </div>
-                                                                        <div id="stockkk">
-                                                                            <span style="color: white;"><%=c.getStock()%></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>        
-                                                        </div> 
-                                              <%    }  %> 
-                                        </div>
-                                    </div>
-                                </div>   
+        <%
+            Conexion connCarrusel = new Conexion();
+            Reporteproducto_masvendido carrusel = new Reporteproducto_masvendido(connCarrusel);
+            LinkedList<Reporteproducto_masvendido> lista_carrusel = carrusel.ProductomasVendido();%>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
+                        <div class="row" id="promit">
+                            <span id="p_caro">Productos mas vendidos</span>  
                         </div>
-                    </div>  
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
+                        <div class="row" id="promit">
+                            <%for (Reporteproducto_masvendido c : lista_carrusel) {
+                            %>
+                            <div  id="inprod" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                                <div id="margen">
+                                    <img  class="img-thumbnail" id="cargaimagen" src="<%=c.getImg()%>">
+                                    <p id="product" ><%=c.getProducto()%></p>
+                                    <div id="produ"class="row">
+                                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                            <div class="container">
+                                                <form method="post" action="producto.jsp" >
+                                                    <input type="hidden" value="<%=c.getId()%>" name="id_prod">  
+                                                    <input type="submit" id="btn" class="btn btn-danger" value="Ver Producto"> 
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="row">
+                                                <!-- agregasr-->
+                                                <a id="canasta" href="" class="btn btn-success disabled" ><img id="newc" src="admin/image/tienda.png"></a>
+                                                <!-- /////////////-->
+                                            </div>
+                                            <div id="stockkk">
+                                                <span style="color: white;"><%=c.getStock()%></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>        
+                            </div> 
+                            <%    }%> 
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div>  
 
         <!-- MODALS -->
         <%@include file="modals.jsp" %>
-        <!-- FOOTER-->
-        <%@include file="footer_index.jsp" %>
 
-        
+        <!-- Modal Productos quitados del carrito por falta de stock-->
+        <div class="modal fade" id="ModalProductosQuitados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Productos quitados</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Los siguientes productos fueron quitados, debido a que ya no contamos con la cantidad solicitada.</h6>
+                        
+                        <input id="quitarProd" type="hidden" value="${QuitarProducto}">
+
+
+                        <table id="table" class="dataTable no-footer" role="grid" aria-describedby="table_info" style="width: 100%;">
+                            <thead>
+                                <tr role="row"><td class="sorting_asc" tabindex="0" aria-controls="table" rowspan="1" colspan="1" aria-label=": activate to sort column descending" style="width: 0px;" aria-sort="ascending"></td></tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${productosQuitados}" var="productoQuitado">
+                                    <tr role="row" class="odd">
+                                        <td style="background-color:#ffffff;" class="sorting_1">
+                                            <a>
+                                                <button type="submit" class="SubmitButtonClass btn-light" style="border:none; padding:0px"> <img src="${productoQuitado.getImagen()}" style="width:60px ;"></button> 
+                                                <span style="margin-left:5px">
+                                                    ${productoQuitado.getNombre()}
+                                                    <h6 style="margin-left:68px;margin-top:-20px">${productoQuitado.getCaracteristicas()}</h6>
+                                                </span>
+                                                <input type="hidden" value="6" name="id_prod">  
+
+                                            </a> 
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
             function verproducto(idpro)
             {
                 window.open("/RapidFast/producto.jsp?id_prod=" + idpro + "", "_self");
             }
-        </script>
-        
-  
+            $(document).ready(function () {
+                try {
+                    let QuitarProducto = document.getElementById('quitarProd').value;
+                    if (QuitarProducto === "true") {
+                        $('#ModalProductosQuitados').modal('show');
+                    }
+                } catch (e) {
+
+                }
+            });
+        </script>  
+
+        <!-- FOOTER-->
+        <%@include file="footer_index.jsp" %>
 
     </body>
 </html>
